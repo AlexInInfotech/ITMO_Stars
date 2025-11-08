@@ -1,0 +1,4 @@
+repository "ITMO Stars/ITMO Stars@10171147981436@cloud"
+  path "/"
+    br "/main"
+    co "/main"
