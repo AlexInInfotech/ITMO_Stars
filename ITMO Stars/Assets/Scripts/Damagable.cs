@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public interface Damagable 
+public abstract class AbstractDamagable: MonoBehaviour, IDamagable
 {
-    public float health { get; set; }
-    public void GetDamage(float damage)
-    {
-        Debug.Log("GEt Damage");
-    }
+    public abstract float health { get; set; }
+    public abstract void GetDamage(float damage);
+
+}
+public interface IDamagable 
+{
+    float health { get; set; }
+    void GetDamage(float damage) { }
 }

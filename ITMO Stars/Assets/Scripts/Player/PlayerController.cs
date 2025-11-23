@@ -9,13 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform BottomPoint;
     [SerializeField] Transform RightPoint;
     [SerializeField] float AttackRadius;
-    [SerializeField] LayerMask Damagable;
+    [SerializeField] LayerMask DamagableLayer;
     Rigidbody2D rb => this.GetComponent<Rigidbody2D>();
     Vector2 movement = Vector2.zero;
     Vector2 direction = Vector2.zero;
     public void CauseDamage()
     {
-        Debug.Log("CauseDamage");
         Transform TransformPoint;
         if (direction.y > 0)
             TransformPoint = TopPoint;
@@ -23,9 +22,10 @@ public class PlayerController : MonoBehaviour
             TransformPoint = BottomPoint;
         else
             TransformPoint = RightPoint;
-        Collider2D[] hitedEnemyes = Physics2D.OverlapCircleAll(TransformPoint.position, AttackRadius, Damagable);
+        Collider2D[] hitedEnemyes = Physics2D.OverlapCircleAll(TransformPoint.position, AttackRadius, DamagableLayer);
         foreach (Collider2D enemy in hitedEnemyes)
-            enemy.GetComponent<Damagable>().GetDamage(1f);
+            if (enemy.TryGetComponent<AbstractDamagable>(out AbstractDamagable component))
+                component.GetDamage(1f);
     }
     void Update()
     {

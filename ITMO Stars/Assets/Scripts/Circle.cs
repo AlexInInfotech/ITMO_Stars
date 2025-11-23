@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class Circle : MonoBehaviour, Damagable
+public class Circle : AbstractDamagable
 {
-    public float health { get; set; }
-    public void GetDamage(float damage)
+
+    public override float health { get; set; }
+    public override void GetDamage(float damage)
     {
-        Debug.Log("GEt Damage");
+        Debug.Log("Circle Damage");
     }
 }
