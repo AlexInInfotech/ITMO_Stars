@@ -2,16 +2,15 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-public class MobMovement : MonoBehaviour
+public class MobMovement : Movable
 {
 
-    [SerializeField]protected float speed = 10f;
-    protected Vector3 direction;
-    protected Vector3 PointToGo = new Vector3();
+    protected Vector2 PointToGo = new Vector2();
     protected float MovementRadius = 20f;
     [SerializeField] protected float TargetRadius = 2f;
     protected float WaitTime = 0f;
     protected float MaxWaitTime = 10f;
+    [SerializeField] protected float MinOffset = 1f;
     protected Vector3 RandomPointInArea(Vector3 Center, float MovementRadius)
     {
         Vector3 Point = new Vector3();
@@ -19,23 +18,28 @@ public class MobMovement : MonoBehaviour
         Point.y = Center.y + UnityEngine.Random.Range(-MovementRadius, MovementRadius);
         return Point;
     }
-    protected Vector3 DirectToPoint(Vector3 Point, Vector3 Position, float PointRadius)
+    protected Vector2 DirectToPoint( Vector2 Position, Vector2 Point, float PointRadius)
     {
-        Vector3 direction = new Vector3();
-        direction = Point - Position;
-        if (Math.Abs(direction.x) <= PointRadius)
-            direction.x = 0;
-        else if (direction.x > 0)
-            direction.x = 1;
+        Vector2 _direction = new Vector2();
+        _direction = Point - Position;
+        if (Math.Abs(_direction.x) <= PointRadius - Math.Sqrt(PointRadius))
+            _direction.x = 0;
+        else if (_direction.x > 0)
+            _direction.x = 1;
         else
-            direction.x = -1;
-        if (Math.Abs(direction.y) <= PointRadius)
-            direction.y = 0;
-        else if (direction.y > 0)
-            direction.y = 1;
+            _direction.x = -1;
+        if (Math.Abs(_direction.y) <= PointRadius - Math.Sqrt(PointRadius))
+            _direction.y = 0;
+        else if (_direction.y > 0)
+            _direction.y = 1;
         else
-            direction.y = -1;
-        return direction;
+            _direction.y = -1;
+        return _direction;
+    }
+    protected void GoToPoint()
+    {
+        direction = DirectToPoint(transform.position, PointToGo, TargetRadius);
+        Run(direction);
     }
     protected void Walk()
     {
@@ -44,16 +48,14 @@ public class MobMovement : MonoBehaviour
             WaitTime -= Time.deltaTime;
             return;
         }
-        if (PointToGo == new Vector3())
+        if (PointToGo == new Vector2())
             PointToGo = RandomPointInArea(transform.position, MovementRadius);
-        direction = DirectToPoint(PointToGo, transform.position, TargetRadius);
+        GoToPoint();
         if (direction.x == 0 && direction.y == 0)
         {
-            PointToGo = new Vector3();
+            PointToGo = new Vector2();
             WaitTime = UnityEngine.Random.Range(0, MaxWaitTime);
         }
-        transform.position += direction * speed * Time.deltaTime;
-
     }
     private void Update()
     {

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class AnimatorController : MonoBehaviour
 {
-    [SerializeField]PlayerController controller;
     Animator animator => GetComponent<Animator>();
-    Transform trans => GetComponent<Transform>();
     const string IS_RUNNING = "IsRunning";
     const string VERTICAL = "Vertical";
     const string SPRINT = "Sprint";
@@ -30,11 +28,13 @@ public class AnimatorController : MonoBehaviour
     }
     public void Sprint(Vector2 direction)
     {
+        if (IsSprinting) 
+            return;
         animator.SetTrigger(SPRINT);
         IsSprinting = true;
         SetDirection(direction);
     }
-    public void Stop()
+    public void StopRunning()
     {
         animator.SetBool(IS_RUNNING, false);
     }
@@ -50,7 +50,6 @@ public class AnimatorController : MonoBehaviour
         else
             direction.y = 0;
         animator.SetFloat(VERTICAL, direction.y);
-        trans.rotation = (direction.x < 0) ? new Quaternion(0, 180, 0, 0) : new Quaternion();
     }
     private void EndSprint()
     {
@@ -58,7 +57,7 @@ public class AnimatorController : MonoBehaviour
     }
     private void Attack()
     {
-        controller.CauseDamage();
+        GetComponentInParent<AttackController>().AttackInCircle();
     }
 
 }

@@ -1021,7 +1021,6 @@ MonoBehaviour:
   Visual: {fileID: 1081141323}
   speed: 10
   TargetRadius: 2
-  MinOffset: 5
 --- !u!114 &1908796928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,8 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   Visual: {fileID: 1081141323}
   speed: 10
-  TargetRadius: 6
-  MinOffset: 2
+  TargetRadius: 3
   ChaseRadius: 30
 --- !u!58 &1908796929
 CircleCollider2D:
