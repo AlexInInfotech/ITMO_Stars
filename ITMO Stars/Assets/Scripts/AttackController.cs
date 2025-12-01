@@ -6,6 +6,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] Transform BottomPoint;
     [SerializeField] Transform RightPoint;
     [SerializeField] float AttackRadius;
+    [SerializeField] float AttackValue;
     [SerializeField] LayerMask DamagableLayer;
     [SerializeField] Movable MoveController;
     public void AttackInCircle()
@@ -21,6 +22,13 @@ public class AttackController : MonoBehaviour
         Collider2D[] hitedEnemyes = Physics2D.OverlapCircleAll(TransformPoint.position, AttackRadius, DamagableLayer);
         foreach (Collider2D enemy in hitedEnemyes)
             if (enemy.TryGetComponent<AbstractDamagable>(out AbstractDamagable component))
-                component.GetDamage(1f);
+                component.GetDamage(AttackValue);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(TopPoint.position, AttackRadius);
+        Gizmos.DrawSphere(BottomPoint.position, AttackRadius);
+        Gizmos.DrawSphere(RightPoint.position, AttackRadius);
     }
 }

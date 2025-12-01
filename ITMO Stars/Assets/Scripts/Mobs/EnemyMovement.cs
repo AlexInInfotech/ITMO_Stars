@@ -5,16 +5,15 @@ public class EnemyMovement : MobMovement
 {
     private BehaviourState state;
     [SerializeField]private float ChaseRadius;
-    private void OnTriggerStay2D(Collider2D collision)
+    private Transform ObjectToChase;
+    public void ChaseObject(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Player")
-            return;
-        PointToGo = collision.gameObject.transform.position;
+        ObjectToChase = collision.gameObject.transform;
         state = BehaviourState.Fighting;
-        
     }
     private void Fighting()
     {
+        PointToGo = ObjectToChase.position;
         if ((rb.position - PointToGo).magnitude >= ChaseRadius)
             state = BehaviourState.Walk;
         else if ((rb.position - PointToGo).magnitude >= TargetRadius)

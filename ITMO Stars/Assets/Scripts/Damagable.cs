@@ -2,7 +2,8 @@ using UnityEngine;
 
 public abstract class AbstractDamagable: MonoBehaviour, IDamagable
 {
-    public abstract float health { get; set; }
+    public float health { get; set; }
+    [SerializeField] public float MaxHealth;
     public abstract void GetDamage(float damage);
 
 }

@@ -10,7 +10,7 @@ public class MobMovement : Movable
     [SerializeField] protected float TargetRadius = 2f;
     protected float WaitTime = 0f;
     protected float MaxWaitTime = 10f;
-    [SerializeField] protected float MinOffset = 1f;
+    //[SerializeField] protected float MinOffset = 1f;
     protected Vector3 RandomPointInArea(Vector3 Center, float MovementRadius)
     {
         Vector3 Point = new Vector3();
@@ -22,13 +22,14 @@ public class MobMovement : Movable
     {
         Vector2 _direction = new Vector2();
         _direction = Point - Position;
-        if (Math.Abs(_direction.x) <= PointRadius - Math.Sqrt(PointRadius))
+        _direction = _direction.magnitude <= PointRadius ? Vector2.zero : _direction;
+        if (Math.Abs(_direction.x) <= PointRadius/2)
             _direction.x = 0;
         else if (_direction.x > 0)
             _direction.x = 1;
         else
             _direction.x = -1;
-        if (Math.Abs(_direction.y) <= PointRadius - Math.Sqrt(PointRadius))
+        if (Math.Abs(_direction.y) <= PointRadius /2)
             _direction.y = 0;
         else if (_direction.y > 0)
             _direction.y = 1;
