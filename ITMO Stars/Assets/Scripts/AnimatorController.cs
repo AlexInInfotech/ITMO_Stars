@@ -51,7 +51,7 @@ public class AnimatorController : MonoBehaviour
             direction.y = 0;
         animator.SetFloat(VERTICAL, direction.y);
     }
-    private void EndSprint()
+    public void EndSprint()
     {
         IsSprinting = false;
     }

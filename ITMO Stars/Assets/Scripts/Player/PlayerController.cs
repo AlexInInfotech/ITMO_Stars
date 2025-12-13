@@ -6,8 +6,11 @@ public class PlayerController : Movable
     Vector2 movement = Vector2.zero;
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+            MobsManager.CreateMob(Vector2.zero, "Mob");
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        Debug.Log(Visual.IsSprinting);
         if (!Visual.IsSprinting)
             Run(movement);
         if (Input.GetKeyDown(KeyCode.Space))

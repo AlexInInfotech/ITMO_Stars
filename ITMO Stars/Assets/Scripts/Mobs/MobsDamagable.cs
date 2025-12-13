@@ -8,9 +8,9 @@ public class MobsDamagable : AbstractDamagable
         Debug.Log(damage);
         if (health < 0)
         {
-            Debug.Log("Dead");
+            Debug.Log(name + " Dead");
             health = MaxHealth;
-            this.gameObject.SetActive(false);
+            MobsManager.DeleteMob(name);
         }
     }
     private void Start()
