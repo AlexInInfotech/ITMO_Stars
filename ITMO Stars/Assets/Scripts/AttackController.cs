@@ -8,9 +8,14 @@ public class AttackController : MonoBehaviour
     [SerializeField] float AttackRadius;
     [SerializeField] float AttackValue;
     [SerializeField] LayerMask DamagableLayer;
-    [SerializeField] Movable MoveController;
+    [SerializeField] Movable MoveController => GetComponent<Movable>();
+    public void SetAttackStrength(float strength)
+    {
+        AttackValue = strength;
+    }
     public void AttackInCircle()
     {
+        Debug.Log("ATTACK");
         Vector2 direction = MoveController.direction;
         Transform TransformPoint;
         if (direction.y > 0)
@@ -21,7 +26,7 @@ public class AttackController : MonoBehaviour
             TransformPoint = RightPoint;
         Collider2D[] hitedEnemyes = Physics2D.OverlapCircleAll(TransformPoint.position, AttackRadius, DamagableLayer);
         foreach (Collider2D enemy in hitedEnemyes)
-            if (enemy.TryGetComponent<AbstractDamagable>(out AbstractDamagable component))
+            if (enemy.gameObject.name != this.name && enemy.TryGetComponent<AbstractDamagable>(out AbstractDamagable component))
                 component.GetDamage(AttackValue);
     }
 

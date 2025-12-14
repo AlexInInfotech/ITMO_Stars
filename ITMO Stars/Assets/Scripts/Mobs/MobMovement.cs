@@ -10,7 +10,6 @@ public class MobMovement : Movable
     [SerializeField] protected float TargetRadius = 2f;
     protected float WaitTime = 0f;
     protected float MaxWaitTime = 10f;
-    //[SerializeField] protected float MinOffset = 1f;
     protected Vector3 RandomPointInArea(Vector3 Center, float MovementRadius)
     {
         Vector3 Point = new Vector3();

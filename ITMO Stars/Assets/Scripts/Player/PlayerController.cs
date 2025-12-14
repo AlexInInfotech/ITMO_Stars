@@ -10,11 +10,10 @@ public class PlayerController : Movable
             MobsManager.CreateMob(Vector2.zero, "Mob");
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        Debug.Log(Visual.IsSprinting);
         if (!Visual.IsSprinting)
             Run(movement);
         if (Input.GetKeyDown(KeyCode.Space))
-            Visual.Sprint(direction);
+            Visual.ShowSprinting(direction);
         if (Visual.IsSprinting)
             rb.MovePosition(rb.position + direction * SprintAcceleration * Time.deltaTime);
         if (Input.GetMouseButtonDown(0))

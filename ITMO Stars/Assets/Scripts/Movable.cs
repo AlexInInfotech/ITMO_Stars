@@ -14,6 +14,10 @@ public class Movable : MonoBehaviour
                 return;
         trans.rotation = (direction.x < 0) ? new Quaternion(0, 180, 0, 0) : new Quaternion();
     }
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
     protected void Run(Vector2 _direction)
     {
         if (_direction.x != 0 || _direction.y != 0)
@@ -21,7 +25,7 @@ public class Movable : MonoBehaviour
             rb.MovePosition(rb.position + _direction * Time.deltaTime * speed);
             direction = _direction;
             SetRotation();
-            Visual.Run(direction);
+            Visual.ShowRunning(direction);
         }
         else
             Visual.StopRunning();

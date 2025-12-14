@@ -9,6 +9,7 @@ public class AnimatorController : MonoBehaviour
     const string VERTICAL = "Vertical";
     const string SPRINT = "Sprint";
     const string ATTACK = "Attack";
+    const string INJURY = "Injury";
 
     public bool IsSprinting {  get; private set; }
     void Start()
@@ -21,12 +22,16 @@ public class AnimatorController : MonoBehaviour
         SetDirection(direction);
         animator.SetTrigger(ATTACK);
     }
-    public void Run(Vector2 direction)
+    public void ShowRunning(Vector2 direction)
     {
         SetDirection(direction);
         animator.SetBool(IS_RUNNING, true);
     }
-    public void Sprint(Vector2 direction)
+    public void ShowInjury()
+    {
+        animator.SetTrigger(INJURY);
+    }
+    public void ShowSprinting(Vector2 direction)
     {
         if (IsSprinting) 
             return;
