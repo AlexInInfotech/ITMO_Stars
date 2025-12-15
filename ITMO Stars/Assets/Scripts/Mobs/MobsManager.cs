@@ -28,15 +28,9 @@ public class MobsManager : MonoBehaviour
         Enemies = _Enemies;
         for (int i = 0; i < transform.childCount; i++)
             if (transform.GetChild(i).name.Contains(FRIENDLYMOB))
-            {
                 BasesForFriendlyMobs[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
-                Debug.Log("Friendluy");
-            }
             else
-            { 
                 BasesForEnemies[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
-                Debug.Log("EENMy");
-            }
         ManagerTransform = GetComponent<Transform>();
     }
     private static MobInfo GetFriendlyMobInfo(string name)
@@ -65,7 +59,9 @@ public class MobsManager : MonoBehaviour
         Base.GetComponent<BoxCollider2D>().offset = inf.ColliderOffset;
         Base.GetComponent<BoxCollider2D>().size = inf.ColliderSize;
         Base.GetComponent<Movable>().SetSpeed(inf.Speed);
+        Base.GetComponent<AbstractDamagable>().MaxHealth = inf.MaxHealth;
         Base.GetComponentInChildren<Animator>().runtimeAnimatorController = inf.AnimatorController;
+       // Base.GetComponentInChildren<SpriteRenderer>().color= new Color(0, 0, 0);
     }
     private static void ApplyInfoToBase(GameObject Base, EnemyInfo inf)
     {
@@ -83,7 +79,7 @@ public class MobsManager : MonoBehaviour
             ApplyInfoToBase(mob.gameObject, enemyInfo);
     }
     public static void DeleteMob(GameObject gameObject)
-    {
+    {   
         string name = gameObject.name;
         if (IsMobFriendly(name))
         {

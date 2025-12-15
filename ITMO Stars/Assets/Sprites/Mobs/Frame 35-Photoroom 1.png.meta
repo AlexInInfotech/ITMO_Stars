@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 1f05e1b34ba06fc4186e4fb83bd0c5fd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1850694740267764928
+    second: Frame 35-Photoroom 1_0
+  - first:
+      213: 1113893971832676069
+    second: Frame 35-Photoroom 1_1
+  - first:
+      213: -1345182827120203878
+    second: Frame 35-Photoroom 1_2
+  - first:
+      213: -2566332374698917904
+    second: Frame 35-Photoroom 1_3
+  - first:
+      213: -3715823669701666357
+    second: Frame 35-Photoroom 1_4
+  - first:
+      213: 1990373463520737348
+    second: Frame 35-Photoroom 1_5
+  - first:
+      213: 1411688300056601729
+    second: Frame 35-Photoroom 1_6
+  - first:
+      213: 2923516215282429422
+    second: Frame 35-Photoroom 1_7
+  - first:
+      213: -88670748013579602
+    second: Frame 35-Photoroom 1_8
+  - first:
+      213: 4285822395070181221
+    second: Frame 35-Photoroom 1_9
+  - first:
+      213: -8721691085479156091
+    second: Frame 35-Photoroom 1_10
+  - first:
+      213: 8048889052867980396
+    second: Frame 35-Photoroom 1_11
+  - first:
+      213: -9091577234773254079
+    second: Frame 35-Photoroom 1_12
+  - first:
+      213: -554606471689979952
+    second: Frame 35-Photoroom 1_13
+  - first:
+      213: 3256913540463591082
+    second: Frame 35-Photoroom 1_14
+  - first:
+      213: 2572500379195154603
+    second: Frame 35-Photoroom 1_15
+  - first:
+      213: -5143287786314613186
+    second: Frame 35-Photoroom 1_16
+  - first:
+      213: -5583779266519858216
+    second: Frame 35-Photoroom 1_17
+  - first:
+      213: 5466774119291806826
+    second: Frame 35-Photoroom 1_18
+  - first:
+      213: 1562473970942161096
+    second: Frame 35-Photoroom 1_19
+  - first:
+      213: 9118131494569034205
+    second: Frame 35-Photoroom 1_20
+  - first:
+      213: -4617758244014685510
+    second: Frame 35-Photoroom 1_21
+  - first:
+      213: 4854059345591914520
+    second: Frame 35-Photoroom 1_22
+  - first:
+      213: 3134470061223728070
+    second: Frame 35-Photoroom 1_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_0
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 515
+        width: 79
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043f7aa60f20156e0800000000000000
+      internalID: -1850694740267764928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 515
+        width: 83
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee198c6aa8557f00800000000000000
+      internalID: 1113893971832676069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_2
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 515
+        width: 108
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a976b878853f45de0800000000000000
+      internalID: -1345182827120203878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_3
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 515
+        width: 113
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ff7c7e5d4e826cd0800000000000000
+      internalID: -2566332374698917904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_4
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 515
+        width: 116
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc991774f0ebe6cc0800000000000000
+      internalID: -3715823669701666357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_5
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 515
+        width: 119
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 448748f9e1a3f9b10800000000000000
+      internalID: 1990373463520737348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_6
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 357
+        width: 80
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184e27a8703579310800000000000000
+      internalID: 1411688300056601729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_7
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 357
+        width: 82
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eede003228a629820800000000000000
+      internalID: 2923516215282429422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_8
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 357
+        width: 107
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea2beaaac6af4cef0800000000000000
+      internalID: -88670748013579602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_9
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 357
+        width: 109
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56f6294d2cc4a7b30800000000000000
+      internalID: 4285822395070181221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_10
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 357
+        width: 111
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 586e251da2456f680800000000000000
+      internalID: -8721691085479156091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_11
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 357
+        width: 113
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ce9b0e2f563bf60800000000000000
+      internalID: 8048889052867980396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_12
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 199
+        width: 75
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 140ef499caa34d180800000000000000
+      internalID: -9091577234773254079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_13
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 199
+        width: 78
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d739c83a54ad48f0800000000000000
+      internalID: -554606471689979952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_14
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 199
+        width: 100
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaefd73fb91e23d20800000000000000
+      internalID: 3256913540463591082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_15
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 198
+        width: 102
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba02c76177b53b320800000000000000
+      internalID: 2572500379195154603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_16
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 199
+        width: 104
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3ebc17320f5f98b0800000000000000
+      internalID: -5143287786314613186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_17
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 198
+        width: 102
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d384ea575e6282b0800000000000000
+      internalID: -5583779266519858216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_18
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 100
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64efa7e812eddb40800000000000000
+      internalID: 5466774119291806826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_19
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 42
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c03dc85cc50fa510800000000000000
+      internalID: 1562473970942161096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_20
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 42
+        width: 94
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1c61dc84c1a8e70800000000000000
+      internalID: 9118131494569034205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_21
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 40
+        width: 96
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab28fdec75d6aefb0800000000000000
+      internalID: -4617758244014685510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_22
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 42
+        width: 96
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 810dba4c1451d5340800000000000000
+      internalID: 4854059345591914520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frame 35-Photoroom 1_23
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 40
+        width: 97
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3565ed9efdf7b20800000000000000
+      internalID: 3134470061223728070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5deeccc9f66ca504ebae3afe42e5d0f8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Frame 35-Photoroom 1_0: -1850694740267764928
+      Frame 35-Photoroom 1_1: 1113893971832676069
+      Frame 35-Photoroom 1_10: -8721691085479156091
+      Frame 35-Photoroom 1_11: 8048889052867980396
+      Frame 35-Photoroom 1_12: -9091577234773254079
+      Frame 35-Photoroom 1_13: -554606471689979952
+      Frame 35-Photoroom 1_14: 3256913540463591082
+      Frame 35-Photoroom 1_15: 2572500379195154603
+      Frame 35-Photoroom 1_16: -5143287786314613186
+      Frame 35-Photoroom 1_17: -5583779266519858216
+      Frame 35-Photoroom 1_18: 5466774119291806826
+      Frame 35-Photoroom 1_19: 1562473970942161096
+      Frame 35-Photoroom 1_2: -1345182827120203878
+      Frame 35-Photoroom 1_20: 9118131494569034205
+      Frame 35-Photoroom 1_21: -4617758244014685510
+      Frame 35-Photoroom 1_22: 4854059345591914520
+      Frame 35-Photoroom 1_23: 3134470061223728070
+      Frame 35-Photoroom 1_3: -2566332374698917904
+      Frame 35-Photoroom 1_4: -3715823669701666357
+      Frame 35-Photoroom 1_5: 1990373463520737348
+      Frame 35-Photoroom 1_6: 1411688300056601729
+      Frame 35-Photoroom 1_7: 2923516215282429422
+      Frame 35-Photoroom 1_8: -88670748013579602
+      Frame 35-Photoroom 1_9: 4285822395070181221
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

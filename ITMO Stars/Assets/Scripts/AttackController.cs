@@ -15,7 +15,6 @@ public class AttackController : MonoBehaviour
     }
     public void AttackInCircle()
     {
-        Debug.Log("ATTACK");
         Vector2 direction = MoveController.direction;
         Transform TransformPoint;
         if (direction.y > 0)

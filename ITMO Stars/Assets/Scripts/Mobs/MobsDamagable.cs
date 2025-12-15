@@ -7,15 +7,14 @@ public class MobsDamagable : AbstractDamagable
     public override void GetDamage(float damage)
     {
         health -= damage;
-        Debug.Log(damage);
         animator.ShowInjury();
         if (InjuryEffect != null)
             InjuryEffect.Play();
         if (health < 0)
         {
-            Debug.Log(name + " Dead");
+            animator.ShowDead();
             health = MaxHealth;
-            MobsManager.DeleteMob(gameObject);
+           // MobsManager.DeleteMob(gameObject);
         }
     }
     private void Start()

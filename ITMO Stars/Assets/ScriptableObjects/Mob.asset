@@ -17,5 +17,5 @@ MonoBehaviour:
   ColliderSize: {x: 1, y: 1.2}
   AnimatorController: {fileID: 9100000, guid: de467a64d98516a47a8b926710f2c552, type: 2}
   Speed: 5
-  MaxHealth: 0
+  MaxHealth: 2
   AttackStrength: 0

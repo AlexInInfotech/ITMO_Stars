@@ -291,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6037908261749070462
 Transform:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   Visual: {fileID: 5064134019491435106}
   speed: 10
-  TargetRadius: 5
+  TargetRadius: 6
   ChaseRadius: 30
 --- !u!61 &2416428138672635443
 BoxCollider2D:
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309af3d3153acd41860f7e400218954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobsDamagable
-  MaxHealth: 10
+  MaxHealth: 1
 --- !u!198 &3738410746148243555
 ParticleSystem:
   m_ObjectHideFlags: 0

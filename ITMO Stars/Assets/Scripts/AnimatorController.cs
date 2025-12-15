@@ -10,12 +10,17 @@ public class AnimatorController : MonoBehaviour
     const string SPRINT = "Sprint";
     const string ATTACK = "Attack";
     const string INJURY = "Injury";
+    const string DEAD = "Dead";
 
     public bool IsSprinting {  get; private set; }
     void Start()
     {
         animator.SetBool("IsRunning", false);
         IsSprinting = false;
+    }
+    public void ShowDead()
+    {
+        animator.SetTrigger(DEAD);
     }
     public void ShowAttack(Vector2 direction)
     {
