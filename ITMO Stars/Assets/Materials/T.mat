@@ -43,6 +43,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Transit:
+        m_Texture: {fileID: 18700000, guid: 7864a93387c4e1d4595f1c335a240303, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -58,10 +62,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _Pos: 0
+    - _TileWidth: 4
     - _ZWrite: 0
     - _f: 1
+    - _t: 1.37
     m_Colors:
-    - _Color: {r: 1, g: 0.066037595, b: 0.066037595, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Pos: {r: 0, g: 1, b: -1, a: 0}
+    - _Pos_1: {r: 12.01, g: 0.18, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

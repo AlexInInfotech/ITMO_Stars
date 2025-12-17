@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c826e1cd0bc35f4dbd9272d1d8f4e09
+guid: b08ad1a68e5c8824f93724cc769758f2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8775354296696213606
-    second: DefaultFilled_0
+      213: 4484506335646582928
+    second: DefaultCorners_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,23 +113,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DefaultFilled_0
+      name: DefaultCorners_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        y: 157
+        width: 156
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5897436, y: 0.41290322}
+      border: {x: 34, y: 0, z: 0, w: 35}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9f693fc2cda73680800000000000000
-      internalID: -8775354296696213606
+      spriteID: 098043990ca2c3e30800000000000000
+      internalID: 4484506335646582928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefaultCorners_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 156
+        width: 156
+        height: 156
+      alignment: 9
+      pivot: {x: 0.41025642, y: 0.41025642}
+      border: {x: 0, y: 0, z: 30, w: 35}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4085c6065bd5548a9618e397003999
+      internalID: -1441912793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefaultCorners_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 156
+        height: 156
+      alignment: 9
+      pivot: {x: 0.5897436, y: 0.5897436}
+      border: {x: 34, y: 31, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5f96bfdbc872c64bab5ac2f4897d685
+      internalID: 557352691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DefaultCorners_3
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 0
+        width: 156
+        height: 156
+      alignment: 9
+      pivot: {x: 0.41025642, y: 0.5897436}
+      border: {x: 0, y: 32, z: 30, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bede540b57960aa439719a2002095111
+      internalID: 2137408109
       vertices: []
       indices: 
       edges: []
@@ -138,17 +204,22 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 52cb9698a9e589f42ab6f8bd4cc73128
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":2.0},"gridSpriteSize":{"x":156.0,"y":156.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      DefaultFilled_0: -8775354296696213606
+      DefaultCorners_0: 4484506335646582928
+      DefaultCorners_1: -1441912793
+      DefaultCorners_2: 557352691
+      DefaultCorners_3: 2137408109
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
