@@ -3,13 +3,13 @@ using UnityEngine;
 public class MobsDamagable : AbstractDamagable
 {
     AnimatorController animator => GetComponentInChildren<AnimatorController>();
-    ParticleSystem InjuryEffect = null;
+    ParticleSystem injuryEffect = null;
     public override void GetDamage(float damage)
     {
         health -= damage;
         animator.ShowInjury();
-        if (InjuryEffect != null)
-            InjuryEffect.Play();
+        if (injuryEffect != null)
+            injuryEffect.Play();
         if (health < 0)
         {
             animator.ShowDead();
@@ -20,6 +20,6 @@ public class MobsDamagable : AbstractDamagable
     private void Start()
     {
         health = MaxHealth;
-        TryGetComponent<ParticleSystem>(out InjuryEffect);
+        TryGetComponent<ParticleSystem>(out injuryEffect);
     }
 }

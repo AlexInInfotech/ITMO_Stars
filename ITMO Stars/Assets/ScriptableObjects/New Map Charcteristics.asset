@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3aa2f65df52f14e96c986e5a3f3634, type: 3}
   m_Name: New Map Charcteristics
   m_EditorClassIdentifier: Assembly-CSharp::MapCharcteristics
-  scale: 0
-  octaves: 0
-  persistence: 0
-  lacunarity: 0.63
-  seed: 9
+  scale: 1.39
+  octaves: 2
+  persistence: 1.88
+  lacunarity: 0.09
+  seed: 20

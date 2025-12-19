@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : Movable
 {
-    [SerializeField] float SprintAcceleration = 6f;
+    [SerializeField] float sprintAcceleration = 6f;
     Vector2 movement = Vector2.zero;
     void Update()
     {
@@ -15,7 +15,7 @@ public class PlayerController : Movable
         if (Input.GetKeyDown(KeyCode.Space))
             Visual.ShowSprinting(direction);
         if (Visual.IsSprinting)
-            rb.MovePosition(rb.position + direction * SprintAcceleration * Time.deltaTime);
+            rb.MovePosition(rb.position + direction * sprintAcceleration * Time.deltaTime);
         if (Input.GetMouseButtonDown(0))
             Visual.ShowAttack(direction);
     }

@@ -4,19 +4,19 @@ using UnityEngine.UIElements;
 public class EnemyMovement : MobMovement
 {
     private BehaviourState state;
-    [SerializeField]private float ChaseRadius;
-    private Transform ObjectToChase;
+    [SerializeField]private float chaseRadius;
+    private Transform objectToChase;
     public void ChaseObject(Collider2D collision)
     {
-        ObjectToChase = collision.gameObject.transform;
+        objectToChase = collision.gameObject.transform;
         state = BehaviourState.Fighting;
     }
     private void Fighting()
     {
-        PointToGo = ObjectToChase.position;
-        if ((rb.position - PointToGo).magnitude >= ChaseRadius)
+        pointToGo = objectToChase.position;
+        if ((rb.position - pointToGo).magnitude >= chaseRadius)
             state = BehaviourState.Walk;
-        else if ((rb.position - PointToGo).magnitude >= TargetRadius)
+        else if ((rb.position - pointToGo).magnitude >= targetRadius)
             GoToPoint();
         else
             Visual.ShowAttack(direction);

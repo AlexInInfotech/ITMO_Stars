@@ -2,37 +2,37 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    [SerializeField] Transform TopPoint;
-    [SerializeField] Transform BottomPoint;
-    [SerializeField] Transform RightPoint;
-    [SerializeField] float AttackRadius;
-    [SerializeField] float AttackValue;
-    [SerializeField] LayerMask DamagableLayer;
-    [SerializeField] Movable MoveController => GetComponent<Movable>();
+    [SerializeField] Transform topPoint;
+    [SerializeField] Transform bottomPoint;
+    [SerializeField] Transform rightPoint;
+    [SerializeField] float attackRadius;
+    [SerializeField] float attackValue;
+    [SerializeField] LayerMask damagableLayer;
+    [SerializeField] Movable moveController => GetComponent<Movable>();
     public void SetAttackStrength(float strength)
     {
-        AttackValue = strength;
+        attackValue = strength;
     }
     public void AttackInCircle()
     {
-        Vector2 direction = MoveController.direction;
+        Vector2 direction = moveController.direction;
         Transform TransformPoint;
         if (direction.y > 0)
-            TransformPoint = TopPoint;
+            TransformPoint = topPoint;
         else if (direction.y < 0)
-            TransformPoint = BottomPoint;
+            TransformPoint = bottomPoint;
         else
-            TransformPoint = RightPoint;
-        Collider2D[] hitedEnemyes = Physics2D.OverlapCircleAll(TransformPoint.position, AttackRadius, DamagableLayer);
+            TransformPoint = rightPoint;
+        Collider2D[] hitedEnemyes = Physics2D.OverlapCircleAll(TransformPoint.position, attackRadius, damagableLayer);
         foreach (Collider2D enemy in hitedEnemyes)
             if (enemy.gameObject.name != this.name && enemy.TryGetComponent<AbstractDamagable>(out AbstractDamagable component))
-                component.GetDamage(AttackValue);
+                component.GetDamage(attackValue);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawSphere(TopPoint.position, AttackRadius);
-        Gizmos.DrawSphere(BottomPoint.position, AttackRadius);
-        Gizmos.DrawSphere(RightPoint.position, AttackRadius);
+        Gizmos.DrawSphere(topPoint.position, attackRadius);
+        Gizmos.DrawSphere(bottomPoint.position, attackRadius);
+        Gizmos.DrawSphere(rightPoint.position, attackRadius);
     }
 }

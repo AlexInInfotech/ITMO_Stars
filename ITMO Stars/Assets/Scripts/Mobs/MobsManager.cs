@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class MobsManager : MonoBehaviour
 {
-    [SerializeField] MobInfo[] _FriendlyMobs;
-    [SerializeField] EnemyInfo[] _Enemies;
-    private static MobInfo[] FriendlyMobs;
-    private static EnemyInfo[] Enemies;
+    [SerializeField] MobInfo[] _friendlyMobs;
+    [SerializeField] EnemyInfo[] _enemies;
+    private static MobInfo[] friendlyMobs;
+    private static EnemyInfo[] enemies;
     private class Mob
     {
         public GameObject gameObject;
@@ -16,40 +16,40 @@ public class MobsManager : MonoBehaviour
             gameObject = _gameObject;
         }
     }
-    private static Dictionary<string, Mob> BasesForFriendlyMobs = new Dictionary<string, Mob>();
-    private static Dictionary<string, Mob> BasesForEnemies = new Dictionary<string, Mob>();
-    private static Transform ManagerTransform;
+    private static Dictionary<string, Mob> basesForFriendlyMobs = new Dictionary<string, Mob>();
+    private static Dictionary<string, Mob> basesForEnemies = new Dictionary<string, Mob>();
+    private static Transform managerTransform;
     const string FRIENDLYMOB = "FriendlyMob";
     const string ENEMY = "Enemy";
     
     void Start()
     {
-        FriendlyMobs = _FriendlyMobs;
-        Enemies = _Enemies;
+        friendlyMobs = _friendlyMobs;
+        enemies = _enemies;
         for (int i = 0; i < transform.childCount; i++)
             if (transform.GetChild(i).name.Contains(FRIENDLYMOB))
-                BasesForFriendlyMobs[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
+                basesForFriendlyMobs[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
             else
-                BasesForEnemies[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
-        ManagerTransform = GetComponent<Transform>();
+                basesForEnemies[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
+        managerTransform = GetComponent<Transform>();
     }
     private static MobInfo GetFriendlyMobInfo(string name)
     {
-        foreach (MobInfo info in FriendlyMobs)
+        foreach (MobInfo info in friendlyMobs)
             if (info.name == name)
                 return info;
         return null;
     }
     private static EnemyInfo GetEnemyInfo(string name)
     {
-        foreach (EnemyInfo info in Enemies)
+        foreach (EnemyInfo info in enemies)
             if (info.name == name)
                 return info;
         return null;
     }
     private static bool IsMobFriendly(string mobName)
     {
-        foreach (MobInfo info in FriendlyMobs)
+        foreach (MobInfo info in friendlyMobs)
             if (info.name == mobName)
                 return true;
         return false;
@@ -83,13 +83,13 @@ public class MobsManager : MonoBehaviour
         string name = gameObject.name;
         if (IsMobFriendly(name))
         {
-            BasesForFriendlyMobs[name].IsActive = false;
-            BasesForFriendlyMobs[name].gameObject.SetActive(false);
+            basesForFriendlyMobs[name].IsActive = false;
+            basesForFriendlyMobs[name].gameObject.SetActive(false);
         }
         else
         {
-            BasesForEnemies[name].IsActive = false;
-            BasesForEnemies[name].gameObject.SetActive(false);
+            basesForEnemies[name].IsActive = false;
+            basesForEnemies[name].gameObject.SetActive(false);
         }
     }
 
@@ -104,13 +104,13 @@ public class MobsManager : MonoBehaviour
         if (IsMobFriendly(MobName))
         {
             mobInfo = GetFriendlyMobInfo(MobName);
-            dictionary = BasesForFriendlyMobs;
+            dictionary = basesForFriendlyMobs;
             cluster = FRIENDLYMOB;
         }
         else
         {
             enemyInfo = GetEnemyInfo(MobName);
-            dictionary = BasesForEnemies;
+            dictionary = basesForEnemies;
             cluster = ENEMY;
         }
 
@@ -127,12 +127,12 @@ public class MobsManager : MonoBehaviour
         {
             mob = new Mob(Instantiate(dictionary["0" + cluster].gameObject, Position, new Quaternion()));
             mob.gameObject.name = i+cluster;
-            mob.gameObject.transform.SetParent(ManagerTransform);
+            mob.gameObject.transform.SetParent(managerTransform);
             ActivateMob(mob, Position, mobInfo, enemyInfo);
             if (IsMobFriendly(MobName))
-                BasesForFriendlyMobs.Add(i+ cluster, mob);
+                basesForFriendlyMobs.Add(i+ cluster, mob);
             else
-                BasesForEnemies.Add(i+ cluster, mob);
+                basesForEnemies.Add(i+ cluster, mob);
         }
     }
 }

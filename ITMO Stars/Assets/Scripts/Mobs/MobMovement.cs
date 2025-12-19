@@ -5,11 +5,11 @@ using System.Collections;
 public class MobMovement : Movable
 {
 
-    protected Vector2 PointToGo = new Vector2();
-    protected float MovementRadius = 20f;
-    [SerializeField] protected float TargetRadius = 2f;
-    protected float WaitTime = 0f;
-    protected float MaxWaitTime = 10f;
+    protected Vector2 pointToGo = new Vector2();
+    protected float movementRadius = 20f;
+    [SerializeField] protected float targetRadius = 2f;
+    protected float waitTime = 0f;
+    protected float maxWaitTime = 10f;
     protected Vector3 RandomPointInArea(Vector3 Center, float MovementRadius)
     {
         Vector3 Point = new Vector3();
@@ -38,23 +38,23 @@ public class MobMovement : Movable
     }
     protected void GoToPoint()
     {
-        direction = DirectToPoint(transform.position, PointToGo, TargetRadius);
+        direction = DirectToPoint(transform.position, pointToGo, targetRadius);
         Run(direction);
     }
     protected void Walk()
     {
-        if (WaitTime > 0)
+        if (waitTime > 0)
         {
-            WaitTime -= Time.deltaTime;
+            waitTime -= Time.deltaTime;
             return;
         }
-        if (PointToGo == new Vector2())
-            PointToGo = RandomPointInArea(transform.position, MovementRadius);
+        if (pointToGo == new Vector2())
+            pointToGo = RandomPointInArea(transform.position, movementRadius);
         GoToPoint();
         if (direction.x == 0 && direction.y == 0)
         {
-            PointToGo = new Vector2();
-            WaitTime = UnityEngine.Random.Range(0, MaxWaitTime);
+            pointToGo = new Vector2();
+            waitTime = UnityEngine.Random.Range(0, maxWaitTime);
         }
     }
     private void Update()

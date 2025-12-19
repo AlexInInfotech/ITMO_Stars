@@ -1,9 +1,37 @@
 using System;
 using UnityEngine;
 
-public static class MapGenerator 
+public static class MapGenerator
 {
-    public static float[] Generate(int width, MapCharcteristics mapCharac, Vector2 offset)
+    private static MapCharcteristics mainMapCharac;
+    private static MapCharcteristics riverMapCharac;
+    private static MapCharcteristics biomMapCharac;
+
+    public const byte mainMapSize = 2;
+    public const byte biomMapSize = 4;
+    public static void SetMapsCharcteristics(MapCharcteristics _MainMapCharac, MapCharcteristics _RiverMapCharac, MapCharcteristics _BiomMapCharac)
+    {
+        mainMapCharac = _MainMapCharac;
+        riverMapCharac = _RiverMapCharac;
+        biomMapCharac = _BiomMapCharac;
+    }
+
+    public static void GeneratePerlinMaps(ref FloatMap MainMap, ref FloatMap BiomMap, Vector2 Coord)
+    {
+        MainMap.size = mainMapSize;
+        BiomMap.size = biomMapSize;
+        MainMap.width = (MapManager.tileMapWidth + 2) / mainMapSize;
+        BiomMap.width = (MapManager.tileMapWidth + 2) / biomMapSize;
+        // BiomMap.floatArray = MapGenerator.Generate(BiomMap.width, BiomMapCharac, Coord * OffsetBiom);
+        MainMap.values = GetFloatMap(MainMap.width, mainMapCharac, Coord);
+        //float[] RiverMap = GerFloatMap(MainMap.width, riverMapCharac, Coord);
+        BiomMap.values = GetFloatMap(BiomMap.width, biomMapCharac, Coord);
+        // BiomMaps[2] = MapGenerator.Generate(BiomMap.width, BloodMapCharac, Coord * OffsetBiom);
+        //MapGenerator.UniteMainWidthRiver(MainMap.floatArray, RiverMap);
+        //BiomMap.floatArray = MapGenerator.UniteBioms(BiomMap.width, BiomMaps);
+
+    }
+    private static float[] GetFloatMap(int width, MapCharcteristics mapCharac, Vector2 offset)
     {
         int random;
         float[] Map = new float[width * width];
