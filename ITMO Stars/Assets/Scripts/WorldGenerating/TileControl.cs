@@ -102,40 +102,37 @@ public static class TileControl
         for (byte i = 0; i < rules.Length; i++)
             AddRule(rules[i], ruleGraph);
     }
-    public static GroundData GetCorrectTiles(TileType[] neighbors, BiomType[] bioms)
+    public static GroundData GetTile(TileType[] neighbors, BiomType[] bioms)
     {
         GroundData OutData = new GroundData();
-        BiomType transitBiom = new BiomType();
-        GroundBase ground = GetGroundBase(neighbors[4]);
         TileForm TileForm = new TileForm();
-        TileForm TransitionForm = new TileForm();
         if (neighbors[4] == TileType.water)
             TileForm = TileForm.Fill;
         else
             TileForm = GetRule(neighbors, ruleGraph);
-        TransitionForm = GetRule(bioms, transitRuleGragh, ref transitBiom);
-
-        OutData.Tile = ground.GetTile(TileForm, bioms[4]);
-        OutData.States3.r = ground.GetRedState(bioms[4]);
-        OutData.States3.g = ground.GetGreenState(TransitionForm, transitBiom);
-        OutData.States3.a = 1;
-        OutData.Tilemap = ground.tilemap;
-        OutData.TileType = neighbors[4];
+        OutData.tileBase = TilePallet.GetTileBase(TileForm);
+        OutData.color = GetBiomColor(neighbors[4], bioms[4]);
+        OutData.tileType = neighbors[4];
         return OutData;
     }
-
-    private static GroundBase GetGroundBase(TileType ground)
+    public static void GetTransitInfo(BiomType[] bioms)
+    {
+        TileForm TransitionForm = new TileForm();
+        BiomType transitBiom = new BiomType();
+        TransitionForm = GetRule(bioms, transitRuleGragh, ref transitBiom);
+    }
+    private static Color GetBiomColor(TileType ground, BiomType biomType)
     {
         switch (ground)
         {
             case TileType.water:
-                return TilePallet.Water;
+                return TilePallet.WaterBioms.GetTileColor(biomType);
             case TileType.sand:
-                return TilePallet.Sand;
+                return TilePallet.SandBioms.GetTileColor(biomType);
             case TileType.earth:
-                return TilePallet.Earth;
+                return TilePallet.EarthBioms.GetTileColor(biomType);
             default:
-                return null;
+                return Color.white;
         }
     }
     private static TileForm GetRule(TileType[] neighbors, RuleGraph rules)

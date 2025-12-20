@@ -3,10 +3,9 @@ using UnityEngine.Tilemaps;
 
 public class GroundData
 {
-    public Tilemap Tilemap;
-    public TileType TileType;
+    public TileType tileType;
 
-    public TileBase Tile;
+    public TileBase tileBase;
     public Color color;
 
 
