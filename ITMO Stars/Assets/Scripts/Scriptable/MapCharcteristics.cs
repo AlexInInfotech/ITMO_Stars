@@ -6,8 +6,5 @@ using UnityEngine;
 public class MapCharcteristics : ScriptableObject
 {
      public float scale;
-     public byte octaves;
-     public float persistence;
-     public float lacunarity;
      public int seed;
 }

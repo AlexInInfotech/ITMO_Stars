@@ -18,15 +18,26 @@ public class TileManager : MonoBehaviour
     public Material EarthMaterial;
 
 
-    public const float RiverLow = 0.43f;
-    public const float RiverHight = 0.54f;
-    public const float BiomLow = 0.3f;
-    public const float WaterHight = 0.14f;
-    public const float SandHight = 0.4f;
+    public static float RiverLow = 0.43f;
+    public static float RiverHight = 0.54f;
+    public static float BiomLow = 0.3f;
+    public static float WaterHight =0;
+    public static float SandHight = 0.4f;
+    public float _RiverLow = 0.43f;
+    public float _RiverHight = 0.54f;
+    public  float _BiomLow = 0.3f;
+    public  float _WaterHight =0;
+    public  float _SandHight = 0.4f;
 
     [SerializeField]public TileStates tileStates;
-    private void Start()
+    private void Awake()
     {
+
+        RiverLow = _RiverLow;
+        RiverHight = _RiverHight;
+        BiomLow = _BiomLow;
+        WaterHight = _WaterHight;
+        SandHight = _SandHight;
         TileControl.SetRules();
         TilePallet.tileStates = tileStates;
         TilePallet.WaterBioms.colors = WaterColors;
@@ -36,6 +47,15 @@ public class TileManager : MonoBehaviour
         sandTilemap = _SandTilemap;
         earthTilemap = _EarthTilemap;
 
+    }
+    private void Update()
+    {
+
+        RiverLow = _RiverLow;
+        RiverHight = _RiverHight;
+        BiomLow = _BiomLow;
+        WaterHight = _WaterHight;
+        SandHight = _SandHight;
     }
     public static BiomType GetBiomType(float color)
     {
