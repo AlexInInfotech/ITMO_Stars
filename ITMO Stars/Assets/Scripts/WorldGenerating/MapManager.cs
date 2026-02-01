@@ -1,14 +1,17 @@
 
 using System;
 using System.Drawing;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class MapManager : MonoBehaviour
 {
-    [SerializeField] MapRender visualisation;
-    [SerializeField] MapRender bigCart;
+    //[SerializeField] MapRender visualisation;
+    //[SerializeField] MapRender bigCart;
 
+    [SerializeField] Material waterMaterial;
+    const string TRANSITMAP = "_TransitMap";
 
     [SerializeField] MapCharcteristics mainMapCharc;
     [SerializeField] MapCharcteristics riverMapCharac;
@@ -18,12 +21,23 @@ public class MapManager : MonoBehaviour
     public const int tileMapWidth = 4 * mapScale;
     public const int typeMapWidth = tileMapWidth + 4;
 
-    FloatMap map = new FloatMap();
-    FloatMap biom = new FloatMap();
-     Vector2Int offset;
-    [SerializeField] Vector2Int MiniOffset = Vector2Int.zero;
-    //[SerializeField] int offsetScale;
+    //FloatMap map = new FloatMap();
+    //FloatMap biom = new FloatMap();
+    //[SerializeField] Vector2Int MiniOffset = Vector2Int.zero;
+    ////[SerializeField] int offsetScale;
+    ///
+    Vector2Int offset;
     WorldUnit CurrentUnit;
+
+    private void SetTransitionMap()
+    {
+        Texture2D texture = new Texture2D(2, 2);
+        texture.wrapMode = TextureWrapMode.Clamp;
+        texture.filterMode = FilterMode.Point;
+        texture.SetPixels(colors);
+        texture.Apply();
+        waterMaterial.SetTexture(TRANSITMAP, texture);
+    }
     private void SetConst()
     {
         MapGenerator.SetMapsCharcteristics(mainMapCharc, riverMapCharac, biomMapCharac);
@@ -35,16 +49,18 @@ public class MapManager : MonoBehaviour
         TileManager.PrintWorldUnit(CurrentUnit);
 
 
-        MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
-        visualisation.RenderMap(map.width, map.values);
-        PrintBigMap();
+        //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
+        //visualisation.RenderMap(map.width, map.values);
+        //PrintBigMap();
 
     }
     private void Update()
     {
-        MapGenerator.GeneratePerlinMaps(ref map, ref biom, MiniOffset);
-        visualisation.RenderMap(map.width, map.values);
+        //MapGenerator.GeneratePerlinMaps(ref map, ref biom, MiniOffset);
+        //visualisation.RenderMap(map.width, map.values);
 
+        //PrintBigMap();
+        //SetConst();
 
 
         //  CheckOffset(new Vector2(x,u)); 
@@ -68,14 +84,14 @@ public class MapManager : MonoBehaviour
             offset.y = 0;
         }
     }
-    void PrintBigMap()
-    {
+    //void PrintBigMap()
+    //{
 
-        FloatMap bmap = new FloatMap();
-        FloatMap bbiom = new FloatMap();
+    //    FloatMap bmap = new FloatMap();
+    //    FloatMap bbiom = new FloatMap();
 
-        MapGenerator.BigCart(ref bmap, ref bbiom, Vector2Int.zero);
-        bigCart.RenderMap(bmap.width, bmap.values);
-    }
+    //    MapGenerator.BigCart(ref bmap, ref bbiom, Vector2Int.zero);
+    //    bigCart.RenderMap(bbiom.width, bbiom.values);
+    //}
     
 }

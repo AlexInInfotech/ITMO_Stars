@@ -25,7 +25,7 @@ public class MapRender : MonoBehaviour
         Color[] colorMap = new Color[noiseMap.Length];
         for (int i = 0; i < noiseMap.Length; i++)
         {
-             // colorMap[i] = Color.Lerp(Color.white, Color.black, noiseMap[i]);
+            //colorMap[i] = Color.Lerp(Color.white, Color.black, noiseMap[i]);
             switch (TileManager.GetTileType(noiseMap[i]))
             {
                 case TileType.earth:

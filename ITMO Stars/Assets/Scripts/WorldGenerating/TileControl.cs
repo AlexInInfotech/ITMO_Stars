@@ -50,7 +50,7 @@ public static class TileControl
         }
         graph.rule = rule.tileform;
     }
-    public static void SetRules() //  вызывается при старте один раз
+    public static void SetRules() 
     {
         Rule[] rules = new Rule[9];
         bool[] Fill_Path = { true, true, true, true };

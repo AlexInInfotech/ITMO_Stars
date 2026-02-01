@@ -7,4 +7,7 @@ public class MapCharcteristics : ScriptableObject
 {
      public float scale;
      public int seed;
+     public byte octaves;
+    public float persistence;
+    public float lacunarity;
 }

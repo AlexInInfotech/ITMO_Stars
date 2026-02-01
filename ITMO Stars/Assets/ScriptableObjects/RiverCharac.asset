@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3aa2f65df52f14e96c986e5a3f3634, type: 3}
   m_Name: RiverCharac
   m_EditorClassIdentifier: Assembly-CSharp::MapCharcteristics
-  scale: 100
+  scale: 106.3
   seed: 1234
+  octaves: 2
+  persistence: -0.22
+  lacunarity: 1.85

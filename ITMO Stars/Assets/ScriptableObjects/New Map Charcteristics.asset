@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapCharcteristics
   scale: 21.01
   seed: 30
+  octaves: 2
+  persistence: 0.56
+  lacunarity: 1.77
