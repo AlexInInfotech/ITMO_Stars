@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7864a93387c4e1d4595f1c335a240303
+guid: 7c7f3e900336c57418fde18513b8edd1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2926317321201420807
-    second: Frame 37_0
+      213: -6950829014861874141
+    second: WaterTransit_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,8 +60,8 @@ TextureImporter:
   textureType: 0
   textureShape: 4
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 3
+  flipbookRows: 2
+  flipbookColumns: 7
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -113,45 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Frame 37_0
+      name: WaterTransit_0
       rect:
         serializedVersion: 2
-        x: 256
+        x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 1792
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f577b196e1a367d0800000000000000
-      internalID: -2926317321201420807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Frame 37_1
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71eb7209c5e29c847b3da3a11fa49ed0
-      internalID: 1096659581
+      spriteID: 32cfdaa86d1b98f90800000000000000
+      internalID: -6950829014861874141
       vertices: []
       indices: 
       edges: []
@@ -160,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1611db48f149ca64e98154c0b129f142
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -168,12 +146,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Frame 37_0: -2926317321201420807
-      Frame 37_1: 1096659581
+      WaterTransit_0: -6950829014861874141
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

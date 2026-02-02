@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public static class TileControl
 {
@@ -115,11 +116,14 @@ public static class TileControl
         OutData.tileType = neighbors[4];
         return OutData;
     }
-    public static void GetTransitInfo(BiomType[] bioms)
+    public static Color GetTransitPoint(BiomType[] bioms)
     {
         TileForm TransitionForm = new TileForm();
         BiomType transitBiom = new BiomType();
         TransitionForm = GetRule(bioms, transitRuleGragh, ref transitBiom);
+        Color FormInf = new Color(0, 0,  0, 1f);
+        FormInf.r =(float)(TransitionForm) / (float)(TileForm.CountElements);
+        return FormInf;
     }
     private static Color GetBiomColor(TileType ground, BiomType biomType)
     {

@@ -17,7 +17,7 @@ public class MapRender : MonoBehaviour
         texture.SetPixels(colors);
         texture.Apply();
 
-        spriteRenderer.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 1000.0f); ;
+        spriteRenderer.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 1000.0f); 
     }
 
     private Color[] GenerateNoiseMap(float[] noiseMap)

@@ -1,17 +1,18 @@
 
-using System;
-using System.Drawing;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-
+using System;
 public class MapManager : MonoBehaviour
 {
     //[SerializeField] MapRender visualisation;
     //[SerializeField] MapRender bigCart;
 
+    public SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
     [SerializeField] Material waterMaterial;
+    [SerializeField] Material sandMaterial;
+    [SerializeField] Material earthMaterial;
     const string TRANSITMAP = "_TransitMap";
+    const string TRANSITWIDTH = "_TileWidth";
+    private static Color[] CurrentTransitMap;
 
     [SerializeField] MapCharcteristics mainMapCharc;
     [SerializeField] MapCharcteristics riverMapCharac;
@@ -31,12 +32,24 @@ public class MapManager : MonoBehaviour
 
     private void SetTransitionMap()
     {
-        Texture2D texture = new Texture2D(2, 2);
+        Color[] colors = {
+            Color.yellow, Color.blue, Color.green, Color.red,
+            Color.red,Color.green, Color.blue,  Color.yellow,
+            Color.yellow, Color.blue, Color.green, Color.red,
+            Color.red,Color.green, Color.blue,  Color.yellow,
+        };
+        Texture2D texture = new Texture2D((int)Math.Sqrt(CurrentTransitMap.Length), (int)Math.Sqrt(CurrentTransitMap.Length));
         texture.wrapMode = TextureWrapMode.Clamp;
         texture.filterMode = FilterMode.Point;
-        texture.SetPixels(colors);
+        texture.SetPixels(CurrentTransitMap);
         texture.Apply();
+        spriteRenderer.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 1000.0f);
         waterMaterial.SetTexture(TRANSITMAP, texture);
+        waterMaterial.SetInt(TRANSITWIDTH, (int)Math.Sqrt(CurrentTransitMap.Length));
+        sandMaterial.SetTexture(TRANSITMAP, texture);
+        sandMaterial.SetInt(TRANSITWIDTH, (int)Math.Sqrt(CurrentTransitMap.Length));
+        earthMaterial.SetTexture(TRANSITMAP, texture);
+        earthMaterial.SetInt(TRANSITWIDTH, (int)Math.Sqrt(CurrentTransitMap.Length));
     }
     private void SetConst()
     {
@@ -47,8 +60,8 @@ public class MapManager : MonoBehaviour
         SetConst();
         CurrentUnit = WorldUnit.GetWorldUnit(Vector2Int.zero);
         TileManager.PrintWorldUnit(CurrentUnit);
-
-
+        CurrentTransitMap = CurrentUnit.transitMap;
+        SetTransitionMap();
         //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
         //visualisation.RenderMap(map.width, map.values);
         //PrintBigMap();

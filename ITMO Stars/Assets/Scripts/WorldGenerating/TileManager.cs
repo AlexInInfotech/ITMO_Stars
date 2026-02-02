@@ -61,8 +61,6 @@ public class TileManager : MonoBehaviour
     {
         if (color <= (int)BiomType.atlantic)
             return BiomType.usual;
-        else if (color <= (int)BiomType.blood)
-            return BiomType.atlantic;
         else
             // return BiomType.blood
             return BiomType.atlantic;

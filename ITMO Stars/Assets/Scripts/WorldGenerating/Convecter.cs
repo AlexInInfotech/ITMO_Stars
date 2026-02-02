@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class Convecter 
 {
     private static void SetNeighbors(int CoordMiddle, TileType[] Grounds, BiomType[] Bioms, ref TileType[] neighbors, ref BiomType[] bioms)
@@ -18,12 +20,13 @@ public static class Convecter
                 Bioms[x + y * (MapManager.typeMapWidth)] = TileManager.GetBiomType(BiomMap.values[x / BiomMap.size + (y / BiomMap.size) * BiomMap.width]);
             }
     }
-    public static GroundData[] GetGroundData(FloatMap MainMap, FloatMap BiomMap)
+    public static GroundData[] GetGroundData(FloatMap MainMap, FloatMap BiomMap, out Color[] transitMap)
     {
-        TileType[] types = new TileType[MapManager.typeMapWidth* MapManager.typeMapWidth];
+        TileType[] types = new TileType[MapManager.typeMapWidth * MapManager.typeMapWidth];
         BiomType[] bioms = new BiomType[types.Length];
-        FloatToTypes(MainMap, BiomMap,ref types,ref bioms);
+        FloatToTypes(MainMap, BiomMap, ref types, ref bioms);
         GroundData[] TileMap = new GroundData[(MapManager.typeMapWidth - 4) * (MapManager.typeMapWidth - 4)];
+        transitMap = new Color[TileMap.Length];
         TileType[] neighbors = new TileType[9];
         BiomType[] biomNeighbors = new BiomType[9];
         for (int y = 2; y < MapManager.typeMapWidth - 2; y++)
@@ -32,6 +35,7 @@ public static class Convecter
             {
                 SetNeighbors(x + y * MapManager.typeMapWidth, types, bioms, ref neighbors, ref biomNeighbors);
                 TileMap[x - 2 + (y - 2) * (MapManager.typeMapWidth - 4)] = TileControl.GetTile(neighbors, biomNeighbors);
+                transitMap[x - 2 + (y - 2) * (MapManager.typeMapWidth - 4)] = TileControl.GetTransitPoint(biomNeighbors);
             }
         }
         return TileMap;

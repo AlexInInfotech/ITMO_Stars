@@ -6,6 +6,7 @@ public class WorldUnit
     //public TileType[] TypeMap;
     //public BiomType[] BiomTypeMap;
     public GroundData[] TilesData;
+    public Color[] transitMap;
     public bool IsActive = false;
     private static Dictionary<Vector2Int, WorldUnit> dictionary = new Dictionary<Vector2Int, WorldUnit>();
     private WorldUnit(Vector2Int _Coord)
@@ -14,7 +15,7 @@ public class WorldUnit
         FloatMap MainMap = new FloatMap();
         FloatMap BiomMap = new FloatMap();
         MapGenerator.GeneratePerlinMaps(ref MainMap, ref BiomMap, Coord);
-        TilesData = Convecter.GetGroundData(MainMap, BiomMap);
+        TilesData = Convecter.GetGroundData(MainMap, BiomMap, out transitMap);
     }
 
     public static void ClearFarUnits(Vector2Int CurrentCoord)
