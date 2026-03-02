@@ -7,9 +7,7 @@ public class TileManager : MonoBehaviour
     static Tilemap sandTilemap;
     static Tilemap earthTilemap;
 
-    public Color[] WaterColors;
-    public Color[] SandColors;
-    public Color[] EarthColors;
+
     public Tilemap _WaterTilemap;
     public Tilemap _SandTilemap;
     public Tilemap _EarthTilemap;
@@ -29,7 +27,9 @@ public class TileManager : MonoBehaviour
     public  float _WaterHight =0;
     public  float _SandHight = 0.4f;
 
-    [SerializeField]public TileStates tileStates;
+    [SerializeField] TileKit WaterKit;
+    [SerializeField] TileKit SandKit;
+    [SerializeField] TileKit EarthKit;
     private void Awake()
     {
 
@@ -39,10 +39,9 @@ public class TileManager : MonoBehaviour
         WaterHight = _WaterHight;
         SandHight = _SandHight;
         TileControl.SetRules();
-        TilePallet.tileStates = tileStates;
-        TilePallet.WaterBioms.colors = WaterColors;
-        TilePallet.SandBioms.colors = SandColors;
-        TilePallet.EarthBioms.colors = EarthColors;
+        TilePallet.WaterKit = WaterKit;
+        TilePallet.SandKit = SandKit;
+        TilePallet.EarthKit = EarthKit;
         waterTilemap = _WaterTilemap;
         sandTilemap = _SandTilemap;
         earthTilemap = _EarthTilemap;
@@ -128,9 +127,9 @@ public class TileManager : MonoBehaviour
         waterTilemap.SetTiles(WaterPos, WaterBases);
         sandTilemap.SetTiles(SandPos, SandBases);
         earthTilemap.SetTiles(EarthPos, EarthBases);
-        for (int y = 0; y < MapManager.tileMapWidth; y++)
-            for (int x = 0; x < MapManager.tileMapWidth; x++)
-                GetTileMap(unit.TilesData[x + y * MapManager.tileMapWidth].tileType).SetColor(new Vector3Int(x + OffsetX, y + OffsetY), unit.TilesData[x + y * MapManager.tileMapWidth].color);
+        //for (int y = 0; y < MapManager.tileMapWidth; y++)
+        //    for (int x = 0; x < MapManager.tileMapWidth; x++)
+        //        GetTileMap(unit.TilesData[x + y * MapManager.tileMapWidth].tileType).SetColor(new Vector3Int(x + OffsetX, y + OffsetY), unit.TilesData[x + y * MapManager.tileMapWidth].color);
         unit.IsActive = true;
 
     }

@@ -981,15 +981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a856f153ead994a42b83db8a65b3ec51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileManager
-  WaterColors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  SandColors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  EarthColors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
   _WaterTilemap: {fileID: 2061110445}
   _SandTilemap: {fileID: 1123576636}
   _EarthTilemap: {fileID: 1215748763}
@@ -1001,16 +992,9 @@ MonoBehaviour:
   _BiomLow: 0.3
   _WaterHight: 0
   _SandHight: 0.46
-  tileStates:
-    Fill: {fileID: 11400000, guid: 99567f8f9c4a0024a93ea595d159495c, type: 2}
-    Wall_Right: {fileID: 11400000, guid: fff73bffd386d1147923253e851a0681, type: 2}
-    Wall_Top: {fileID: 11400000, guid: 3d266a211ee3b7c45a2db9a1a084c9a6, type: 2}
-    Wall_Left: {fileID: 11400000, guid: f18660cd24b83054693215fba42de0d1, type: 2}
-    Wall_Bottom: {fileID: 11400000, guid: c0ba83336552c10429d21c9f3ca42229, type: 2}
-    Corner_RightBottom: {fileID: 11400000, guid: 56a79027519914c4b8c5a8af9f8586fa, type: 2}
-    Corner_RightTop: {fileID: 11400000, guid: 64663e25665a6ac4ca3c11a2d786d592, type: 2}
-    Corner_LeftTop: {fileID: 11400000, guid: 8fa57bd0fd22e6a41bcce19b1579bbee, type: 2}
-    Corner_LeftBottom: {fileID: 11400000, guid: 1254aac3fd44488488035605b6a44543, type: 2}
+  WaterKit: {fileID: 11400000, guid: f55989e857040d447b15c1b332debb8c, type: 2}
+  SandKit: {fileID: 11400000, guid: 2c5978ea17751a04c9841a97faa6ea08, type: 2}
+  EarthKit: {fileID: 11400000, guid: 62683c4ca24a80e49b8d8152ac342287, type: 2}
 --- !u!1 &1123576633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,22 +1248,22 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: -1.5775024e-37
+      e00: -1.1355858e-24
       e01: 0
-      e02: -1.5775132e-37
-      e03: -3.8750038
-      e10: 2.7e-44
+      e02: -1.13559525e-24
+      e03: 1.1020282e-38
+      e10: 2.44e-43
       e11: 0
-      e12: 2.7e-44
-      e13: 6.54e-43
-      e20: -1.6592734e+28
+      e12: 2.44e-43
+      e13: 6.2e-43
+      e20: 1.5750722e-31
       e21: 0
-      e22: 6.41369e-40
-      e23: 7.309055e-19
-      e30: 4.5907e-41
+      e22: -1.7006201e+29
+      e23: -1.6921841e-18
+      e30: 4.5915e-41
       e31: 0
-      e32: 6.59e-43
-      e33: 6.56e-43
+      e32: 6.22e-43
+      e33: 6.2e-43
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 1e-45, g: 1e-45, b: 1e-45, a: 1e-45}
@@ -1289,7 +1273,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -8, y: -2, z: 0}
-  m_Size: {x: 13, y: 11, z: 1}
+  m_Size: {x: 54, y: 33, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

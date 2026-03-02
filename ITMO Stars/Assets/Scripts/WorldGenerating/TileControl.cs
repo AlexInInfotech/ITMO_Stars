@@ -82,10 +82,15 @@ public static class TileControl
         bool[] TransitWallRight_Path = { false, true, true, true, };
         bool[] TransitWallTop_Path = { true, false, true };
         bool[] TransitWallBottom_Path = { true, true, true, false };
-        bool[] TransitHallLeftBottom_Path = { false, false };
-        bool[] TransitHallLeftTop_Path = { false, true, true, false };
-        bool[] TransitHallRightBottom_Path = { true, false, false };
-        bool[] TransitHallRightTop_Path = { true, true, false, false };
+        //bool[] TransitHallLeftBottom_Path = { false, false };
+        //bool[] TransitHallLeftTop_Path = { false, true, true, false };
+        //bool[] TransitHallRightBottom_Path = { true, false, false };
+        //bool[] TransitHallRightTop_Path = { true, true, false, false };
+
+        bool[] TransitHallLeftBottom_Path = { true, true, false, false };
+        bool[] TransitHallLeftTop_Path = {true, false, false  };
+        bool[] TransitHallRightBottom_Path = { false, true, true, false };
+        bool[] TransitHallRightTop_Path = { false, false };
         Transitrules[0] = new Rule(TransitHallLeftBottom_Path, TileForm.Hall_LeftBottom);
         Transitrules[1] = new Rule(TransitHallLeftTop_Path, TileForm.Hall_LeftTop);
         Transitrules[2] = new Rule(TransitHallRightBottom_Path, TileForm.Hall_RightBottom);
@@ -110,9 +115,9 @@ public static class TileControl
         if (neighbors[4] == TileType.water)
             TileForm = TileForm.Fill;
         else
-            TileForm = GetRule(neighbors, ruleGraph);
-        OutData.tileBase = TilePallet.GetTileBase(TileForm);
-        OutData.color = GetBiomColor(neighbors[4], bioms[4]);
+            TileForm = GetTileForm(neighbors);
+        OutData.tileBase = TilePallet.GetTileBase(neighbors[4], TileForm, bioms[4]);
+       // OutData.color = GetBiomColor(neighbors[4], bioms[4]);
         OutData.tileType = neighbors[4];
         return OutData;
     }
@@ -120,29 +125,29 @@ public static class TileControl
     {
         TileForm TransitionForm = new TileForm();
         BiomType transitBiom = new BiomType();
-        TransitionForm = GetRule(bioms, transitRuleGragh, ref transitBiom);
+        TransitionForm = GetTransitTileForm(bioms, ref transitBiom);
         Color FormInf = new Color(0, 0,  0, 1f);
         FormInf.r =(float)(TransitionForm) / (float)(TileForm.CountElements);
         return FormInf;
     }
-    private static Color GetBiomColor(TileType ground, BiomType biomType)
-    {
-        switch (ground)
-        {
-            case TileType.water:
-                return TilePallet.WaterBioms.GetTileColor(biomType);
-            case TileType.sand:
-                return TilePallet.SandBioms.GetTileColor(biomType);
-            case TileType.earth:
-                return TilePallet.EarthBioms.GetTileColor(biomType);
-            default:
-                return Color.white;
-        }
-    }
-    private static TileForm GetRule(TileType[] neighbors, RuleGraph rules)
+    //private static Color GetBiomColor(TileType ground, BiomType biomType)
+    //{
+    //    switch (ground)
+    //    {
+    //        case TileType.water:
+    //            return TilePallet.WaterBioms.GetTileColor(biomType);
+    //        case TileType.sand:
+    //            return TilePallet.SandBioms.GetTileColor(biomType);
+    //        case TileType.earth:
+    //            return TilePallet.EarthBioms.GetTileColor(biomType);
+    //        default:
+    //            return Color.white;
+    //    }
+    //}
+    private static TileForm GetTileForm(TileType[] neighbors)
     {
         byte i = 0;
-        RuleGraph Currentgraph = rules;
+        RuleGraph Currentgraph = ruleGraph;
         TileForm TileForm = new TileForm();
         while (Currentgraph != null && i < order.Length)
         {
@@ -156,22 +161,10 @@ public static class TileControl
         }
         return TileForm;
     }
-    //public static void CheckBiomRules()
-    //{
-    //    BiomType[] neighbors =
-    //    {
-    //        BiomType.usual, BiomType.usual, BiomType.usual,
-    //        BiomType.atlantic, BiomType.atlantic, BiomType.usual,
-    //        BiomType.atlantic, BiomType.atlantic, BiomType.usual
-    //    };
-    //    BiomType transit = new BiomType();
-    //    Debug.Log(GetRule(neighbors, transitRuleGragh, ref transit) + " " + transit);
-
-    //}
-    private static TileForm GetRule(BiomType[] neighbors, RuleGraph rules, ref BiomType transitBiom)
+    private static TileForm GetTransitTileForm(BiomType[] neighbors, ref BiomType transitBiom)
     {
         byte i = 0;
-        RuleGraph Currentgraph = rules;
+        RuleGraph Currentgraph = transitRuleGragh;
         TileForm TileForm = new TileForm();
         while (Currentgraph != null && i < order.Length)
         {

@@ -17,6 +17,10 @@ public class WorldUnit
         MapGenerator.GeneratePerlinMaps(ref MainMap, ref BiomMap, Coord);
         TilesData = Convecter.GetGroundData(MainMap, BiomMap, out transitMap);
     }
+    public static bool ExsistWorldUnit(Vector2Int Coord)
+    {
+        return dictionary.ContainsKey(Coord);
+    }
 
     public static void ClearFarUnits(Vector2Int CurrentCoord)
     {

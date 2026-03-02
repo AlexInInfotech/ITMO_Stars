@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abbd2e0ee12cf641ba211cf0fdb37d6, type: 3}
+  m_Name: SandKit
+  m_EditorClassIdentifier: Assembly-CSharp::TileKit
+  Fill:
+  - {fileID: 11400000, guid: 24eb236f0e777bf4c8e76d41bb217f1a, type: 2}
+  - {fileID: 11400000, guid: 24efa87932d31fc4ba0686501d798145, type: 2}
+  Wall_Right:
+  - {fileID: 11400000, guid: c9471ca3648addb418fbeb38911c3696, type: 2}
+  - {fileID: 11400000, guid: e74dab9b76752164ea69aac5eda83fe6, type: 2}
+  Wall_Top:
+  - {fileID: 11400000, guid: 2ff2aab67c77b3040b624f56d4d0c74b, type: 2}
+  - {fileID: 11400000, guid: 25bc9b078e73710488f7006bb9d8e7f9, type: 2}
+  Wall_Left:
+  - {fileID: 11400000, guid: e74dab9b76752164ea69aac5eda83fe6, type: 2}
+  - {fileID: 11400000, guid: 3816120559f8bb041a8c4a063a1da876, type: 2}
+  Wall_Bottom:
+  - {fileID: 11400000, guid: f840c74a8f2d1484d873992109775ffa, type: 2}
+  - {fileID: 11400000, guid: b51741c21aee65249ba4328f1c927ed9, type: 2}
+  Corner_RightBottom:
+  - {fileID: 11400000, guid: 32457b711352775428133e337af7b11b, type: 2}
+  - {fileID: 11400000, guid: a45bd35b5ce221345a407e5fabf4386f, type: 2}
+  Corner_RightTop:
+  - {fileID: 11400000, guid: b28dd41ffb5a92048a5f32dbb4f2356c, type: 2}
+  - {fileID: 11400000, guid: 6c1812fa19a674443bd8a008acbb0372, type: 2}
+  Corner_LeftTop:
+  - {fileID: 11400000, guid: ac361bd24aa6d1d468ad996a4317cf37, type: 2}
+  - {fileID: 11400000, guid: 0d1b3aa168a00124da23c4b56b2acd5d, type: 2}
+  Corner_LeftBottom:
+  - {fileID: 11400000, guid: 7cfcad9e3008b38488ecc75cd58780b2, type: 2}
+  - {fileID: 11400000, guid: c5e0c8f9d47275d43b81b551f83b1a8a, type: 2}

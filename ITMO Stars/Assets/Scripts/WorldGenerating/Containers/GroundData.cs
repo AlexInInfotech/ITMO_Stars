@@ -6,7 +6,7 @@ public class GroundData
     public TileType tileType;
 
     public TileBase tileBase;
-    public Color color;
+   // public Color color;
 
 
     public GroundData() { }

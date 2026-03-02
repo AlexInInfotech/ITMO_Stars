@@ -21,7 +21,6 @@ public class MapManager : MonoBehaviour
     [SerializeField] const byte mapScale = 10;
     public const int tileMapWidth = 4 * mapScale;
     public const int typeMapWidth = tileMapWidth + 4;
-
     //FloatMap map = new FloatMap();
     //FloatMap biom = new FloatMap();
     //[SerializeField] Vector2Int MiniOffset = Vector2Int.zero;
@@ -32,13 +31,13 @@ public class MapManager : MonoBehaviour
 
     private void SetTransitionMap()
     {
-        Color[] colors = {
-            Color.yellow, Color.blue, Color.green, Color.red,
-            Color.red,Color.green, Color.blue,  Color.yellow,
-            Color.yellow, Color.blue, Color.green, Color.red,
-            Color.red,Color.green, Color.blue,  Color.yellow,
-        };
-        Texture2D texture = new Texture2D((int)Math.Sqrt(CurrentTransitMap.Length), (int)Math.Sqrt(CurrentTransitMap.Length));
+        //Color[] colors = {
+        //    Color.yellow, Color.blue, Color.green, Color.red,
+        //    Color.red,Color.green, Color.blue,  Color.yellow,
+        //    Color.yellow, Color.blue, Color.green, Color.red,
+        //    Color.red,Color.green, Color.blue,  Color.yellow,
+        //};
+        Texture2D texture = new Texture2D((int)Math.Sqrt(CurrentTransitMap.Length), (int)Math.Sqrt(CurrentTransitMap.Length), TextureFormat.RGBA32, false,  linear:true);
         texture.wrapMode = TextureWrapMode.Clamp;
         texture.filterMode = FilterMode.Point;
         texture.SetPixels(CurrentTransitMap);
@@ -75,6 +74,7 @@ public class MapManager : MonoBehaviour
         //PrintBigMap();
         //SetConst();
 
+      
 
         //  CheckOffset(new Vector2(x,u)); 
         //  RiverMapCharac = new MapCharcteristics(river_seed, river_scale, river_octaves, river_persistence, river_lacunarity);
