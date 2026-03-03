@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ff2aab67c77b3040b624f56d4d0c74b, type: 2}
   - {fileID: 11400000, guid: 25bc9b078e73710488f7006bb9d8e7f9, type: 2}
   Wall_Left:
-  - {fileID: 11400000, guid: e74dab9b76752164ea69aac5eda83fe6, type: 2}
+  - {fileID: 11400000, guid: 4611139f4c196e840bc841b9109e2750, type: 2}
   - {fileID: 11400000, guid: 3816120559f8bb041a8c4a063a1da876, type: 2}
   Wall_Bottom:
   - {fileID: 11400000, guid: f840c74a8f2d1484d873992109775ffa, type: 2}

@@ -25,7 +25,7 @@ public static class Convecter
         TileType[] types = new TileType[MapManager.typeMapWidth * MapManager.typeMapWidth];
         BiomType[] bioms = new BiomType[types.Length];
         FloatToTypes(MainMap, BiomMap, ref types, ref bioms);
-        GroundData[] TileMap = new GroundData[(MapManager.typeMapWidth - 4) * (MapManager.typeMapWidth - 4)];
+        GroundData[] TileMap = new GroundData[(MapManager.tileMapWidth) * (MapManager.tileMapWidth)];
         transitMap = new Color[TileMap.Length];
         TileType[] neighbors = new TileType[9];
         BiomType[] biomNeighbors = new BiomType[9];
