@@ -21,5 +21,6 @@ public enum TileForm
 public enum BiomType
 {
     usual = 0,
-    atlantic
+    atlantic, 
+    CountElements
 }

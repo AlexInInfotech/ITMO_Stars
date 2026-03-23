@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &418248188
 Transform:
   m_ObjectHideFlags: 0
@@ -718,7 +718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobsManager
   _friendlyMobs: []
-  _enemies: []
+  _enemies:
+  - {fileID: 11400000, guid: 54f2ac6398373064bb324e492609edae, type: 2}
 --- !u!1 &867827778
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,9 +993,7 @@ MonoBehaviour:
   _BiomLow: 0.3
   _WaterHight: 0
   _SandHight: 0.46
-  WaterKit: {fileID: 11400000, guid: f55989e857040d447b15c1b332debb8c, type: 2}
-  SandKit: {fileID: 11400000, guid: 2c5978ea17751a04c9841a97faa6ea08, type: 2}
-  EarthKit: {fileID: 11400000, guid: 62683c4ca24a80e49b8d8152ac342287, type: 2}
+  tilekit: {fileID: 11400000, guid: 7d1f56acd27e20b49babce08d09f5223, type: 2}
 --- !u!1 &1123576633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,7 +1111,31 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -1134,32 +1157,42 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: -1693558
+      e00: -12873944
       e01: 0
-      e02: -1693570
-      e03: -1.1020282e-38
-      e10: 9.8e-44
+      e02: -0.8270693
+      e03: -1.1034003e-38
+      e10: 4.5915e-41
       e11: 0
-      e12: 9.8e-44
-      e13: 6.78e-43
-      e20: -2.9655291e+35
+      e12: 2.12e-43
+      e13: 7.34e-43
+      e20: -36557570
       e21: 0
-      e22: 4.027e-40
-      e23: 2.6748788e-18
-      e30: 4.5914e-41
+      e22: -1.5848383e+29
+      e23: 2.2900847e-19
+      e30: 4.5915e-41
       e31: 0
-      e32: 6.82e-43
-      e33: 6.8e-43
+      e32: 7.37e-43
+      e33: 7.36e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 1e-45, g: 1e-45, b: 1e-45, a: 1e-45}
+    m_Data: {r: -0.827054, g: -0.827054, b: -0.827054, a: -0.827054}
   - m_RefCount: 0
-    m_Data: {r: 1e-45, g: 1e-45, b: 1e-45, a: 1e-45}
+    m_Data: {r: -3.9158303e+21, g: -3.9158303e+21, b: -3.9158303e+21, a: -3.9158303e+21}
+  - m_RefCount: 0
+    m_Data: {r: -0.827054, g: -0.827054, b: -0.827054, a: -0.827054}
+  - m_RefCount: 0
+    m_Data: {r: -0.827054, g: -0.827054, b: -0.827054, a: -0.827054}
+  - m_RefCount: 0
+    m_Data: {r: -0.827054, g: -0.827054, b: -0.827054, a: -0.827054}
+  - m_RefCount: 0
+    m_Data: {r: -0.827054, g: -0.827054, b: -0.827054, a: -0.827054}
+  - m_RefCount: 0
+    m_Data: {r: -0.827054, g: -0.827054, b: -0.827054, a: -0.827054}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -8, y: -2, z: 0}
-  m_Size: {x: 28, y: 19, z: 1}
+  m_Origin: {x: -19, y: -17, z: 0}
+  m_Size: {x: 61, y: 59, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

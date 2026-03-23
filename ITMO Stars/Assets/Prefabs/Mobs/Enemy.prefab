@@ -326,8 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   Visual: {fileID: 5064134019491435106}
   speed: 10
-  TargetRadius: 6
-  ChaseRadius: 30
+  targetRadius: 2
+  chaseRadius: 0
 --- !u!61 &2416428138672635443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -413,12 +413,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d15ba5c79ddf845ac09d0a7af2e44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackController
-  TopPoint: {fileID: 976692029912467637}
-  BottomPoint: {fileID: 1930157131450162070}
-  RightPoint: {fileID: 5109806825581899956}
-  AttackRadius: 3
-  AttackValue: 0
-  DamagableLayer:
+  topPoint: {fileID: 976692029912467637}
+  bottomPoint: {fileID: 1930157131450162070}
+  rightPoint: {fileID: 5109806825581899956}
+  attackRadius: 0
+  attackValue: 0
+  damagableLayer:
     serializedVersion: 2
     m_Bits: 64
 --- !u!114 &601649350670230476

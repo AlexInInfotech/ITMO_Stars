@@ -27,9 +27,10 @@ public class TileManager : MonoBehaviour
     public  float _WaterHight =0;
     public  float _SandHight = 0.4f;
 
-    [SerializeField] TileKit WaterKit;
-    [SerializeField] TileKit SandKit;
-    [SerializeField] TileKit EarthKit;
+    //[SerializeField] TileKit WaterKit;
+    //[SerializeField] TileKit SandKit;
+    //[SerializeField] TileKit EarthKit;
+    [SerializeField] TileKit tilekit;
     private void Awake()
     {
 
@@ -39,9 +40,10 @@ public class TileManager : MonoBehaviour
         WaterHight = _WaterHight;
         SandHight = _SandHight;
         TileControl.SetRules();
-        TilePallet.WaterKit = WaterKit;
-        TilePallet.SandKit = SandKit;
-        TilePallet.EarthKit = EarthKit;
+        //TilePallet.WaterKit = WaterKit;
+        //TilePallet.SandKit = SandKit;
+        //TilePallet.EarthKit = EarthKit;
+        TilePallet.DefaultKit = tilekit;    
         waterTilemap = _WaterTilemap;
         sandTilemap = _SandTilemap;
         earthTilemap = _EarthTilemap;

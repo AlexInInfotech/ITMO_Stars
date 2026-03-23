@@ -4,7 +4,7 @@ public class PlayerController : Movable
 {
     [SerializeField] float sprintAcceleration = 6f;
     Vector2 movement = Vector2.zero;
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.E))
             MobsManager.CreateMob(Vector2.zero, "Mob");
@@ -15,7 +15,7 @@ public class PlayerController : Movable
         if (Input.GetKeyDown(KeyCode.Space))
             Visual.ShowSprinting(direction);
         if (Visual.IsSprinting)
-            rb.MovePosition(rb.position + direction * sprintAcceleration * Time.deltaTime);
+            rb.MovePosition(rb.position + direction * sprintAcceleration * Time.fixedDeltaTime);
         if (Input.GetMouseButtonDown(0))
             Visual.ShowAttack(direction);
     }

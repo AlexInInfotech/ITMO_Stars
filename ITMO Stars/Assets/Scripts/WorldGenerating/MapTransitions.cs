@@ -2,12 +2,13 @@ using UnityEngine;
 using System;
 public static class MapTransitions 
 {
-    public static SpriteRenderer spriteRenderer;
+    //public static SpriteRenderer spriteRenderer;
 
 
     const string TRANSITMAP = "_TransitMap";
     const string TRANSITWIDTH = "_TileWidth";
     const string TRANSITCOORD = "_WorlCoordTransitMap";
+    const string BIOMSCOUNT = "_BiomsCount";
     private static Color[] TransitMap = new Color[MapManager.tileMapWidth* MapManager.tileMapWidth*4];
 
     static Material waterMaterial;
@@ -26,18 +27,21 @@ public static class MapTransitions
         texture.filterMode = FilterMode.Point;
         texture.SetPixels(TransitMap);
         texture.Apply();
-        spriteRenderer.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 1000.0f);
+        //spriteRenderer.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 1000.0f);
         waterMaterial.SetTexture(TRANSITMAP, texture);
         waterMaterial.SetVector(TRANSITCOORD, coord);
         waterMaterial.SetInt(TRANSITWIDTH, (int)Math.Sqrt(TransitMap.Length));
+        waterMaterial.SetFloat(BIOMSCOUNT, (float)BiomType.CountElements);
 
         sandMaterial.SetTexture(TRANSITMAP, texture);
         sandMaterial.SetVector(TRANSITCOORD, coord);
         sandMaterial.SetInt(TRANSITWIDTH, (int)Math.Sqrt(TransitMap.Length));
+        sandMaterial.SetFloat(BIOMSCOUNT, (float)BiomType.CountElements);
 
         earthMaterial.SetTexture(TRANSITMAP, texture);
         earthMaterial.SetVector(TRANSITCOORD, coord);
         earthMaterial.SetInt(TRANSITWIDTH, (int)Math.Sqrt(TransitMap.Length));
+        earthMaterial.SetFloat(BIOMSCOUNT, (float)BiomType.CountElements);
     }
 
     public static void UpdateTransitMap(Vector2Int LeftBottomUnitCoord)

@@ -73,6 +73,37 @@ public static class TileControl
         rules[7] = new Rule(WallTop_Path, TileForm.Wall_Top);
         rules[8] = new Rule(WallBottom_Path, TileForm.Wall_Bottom);
 
+
+        //Rule[] rules = new Rule[12];
+        //bool[] Fill_Path = { true, true, true, true, true, true, true, true };
+        //bool[] CornerLeftBottom_Path = { false, false };
+        //bool[] CornerLeftTop_Path = { false, true, true, false };
+        //bool[] CornerRightBottom_Path = { true, false, false };
+        //bool[] CornerRightTop_Path = { true, true, false, false };
+        //bool[] WallLeft_Path = { false, true, true, true };
+        //bool[] WallRight_Path = { true, true, false, true };
+        //bool[] WallTop_Path = { true, true, true, false };
+        //bool[] WallBottom_Path = { true, false, true };
+        //bool[] HallLeftBottom_Path = { true, true, true, true, true, false };
+        //bool[] HallLeftTop_Path = { true, true, true, true, false };
+        //bool[] HallRightBottom_Path = { true, true, true, true, true, true, false };
+        //bool[] HallRightTop_Path = { true, true, true, true, true, true, true, false };
+        //rules[0] = new Rule(Fill_Path, TileForm.Fill);
+        //rules[1] = new Rule(CornerLeftBottom_Path, TileForm.Corner_LeftBottom);
+        //rules[2] = new Rule(CornerLeftTop_Path, TileForm.Corner_LeftTop);
+        //rules[3] = new Rule(CornerRightBottom_Path, TileForm.Corner_RightBottom);
+        //rules[4] = new Rule(CornerRightTop_Path, TileForm.Corner_RightTop);
+        //rules[5] = new Rule(WallLeft_Path, TileForm.Wall_Left);
+        //rules[6] = new Rule(WallRight_Path, TileForm.Wall_Right);
+        //rules[7] = new Rule(WallTop_Path, TileForm.Wall_Top);
+        //rules[8] = new Rule(WallBottom_Path, TileForm.Wall_Bottom);
+        //rules[9] = new Rule(HallLeftBottom_Path, TileForm.Hall_LeftBottom);
+        //rules[10] = new Rule(HallLeftTop_Path, TileForm.Hall_LeftTop);
+        //rules[11] = new Rule(HallRightBottom_Path, TileForm.Hall_RightBottom);
+        //rules[12] = new Rule(HallRightTop_Path, TileForm.Hall_RightTop);
+
+
+
         Rule[] Transitrules = new Rule[12];
         bool[] TransitCornerLeftBottom_Path = { true, true, true, true, true, true, true, false };
         bool[] TransitCornerLeftTop_Path = { true, true, true, true, true, true, false };
@@ -82,11 +113,6 @@ public static class TileControl
         bool[] TransitWallRight_Path = { false, true, true, true, };
         bool[] TransitWallTop_Path = { true, false, true };
         bool[] TransitWallBottom_Path = { true, true, true, false };
-        //bool[] TransitHallLeftBottom_Path = { false, false };
-        //bool[] TransitHallLeftTop_Path = { false, true, true, false };
-        //bool[] TransitHallRightBottom_Path = { true, false, false };
-        //bool[] TransitHallRightTop_Path = { true, true, false, false };
-
         bool[] TransitHallLeftBottom_Path = { true, true, false, false };
         bool[] TransitHallLeftTop_Path = {true, false, false  };
         bool[] TransitHallRightBottom_Path = { false, true, true, false };
@@ -116,8 +142,7 @@ public static class TileControl
             TileForm = TileForm.Fill;
         else
             TileForm = GetTileForm(neighbors);
-        OutData.tileBase = TilePallet.GetTileBase(neighbors[4], TileForm, bioms[4]);
-       // OutData.color = GetBiomColor(neighbors[4], bioms[4]);
+        OutData.tileBase = TilePallet.GetTileBase( TileForm);
         OutData.tileType = neighbors[4];
         return OutData;
     }
@@ -127,7 +152,8 @@ public static class TileControl
         BiomType transitBiom = new BiomType();
         TransitionForm = GetTransitTileForm(bioms, ref transitBiom);
         Color FormInf = new Color(0, 0,  0, 1f);
-        FormInf.r =(float)(TransitionForm) / (float)(TileForm.CountElements);
+        FormInf.r = (float)(bioms[4]) / (float)(BiomType.CountElements);
+        FormInf.g =(float)(TransitionForm) / (float)(TileForm.CountElements);
         return FormInf;
     }
     //private static Color GetBiomColor(TileType ground, BiomType biomType)

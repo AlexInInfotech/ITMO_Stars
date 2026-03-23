@@ -36,7 +36,7 @@ public class MapManager : MonoBehaviour
         CurrentUnit = WorldUnit.GetWorldUnit(Vector2Int.zero);
         TileManager.PrintWorldUnit(CurrentUnit);
         MapTransitions.SetMaterials(waterMaterial, sandMaterial, earthMaterial);
-        MapTransitions.spriteRenderer = spriteRenderer;
+        //MapTransitions.spriteRenderer = spriteRenderer;
         MapTransitions.UpdateTransitMap(CurrentUnit.Coord);
         //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
         //visualisation.RenderMap(map.width, map.values);
