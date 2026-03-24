@@ -1,8 +1,5 @@
-using System;
-using System.Drawing;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public static class MapGenerator
 {

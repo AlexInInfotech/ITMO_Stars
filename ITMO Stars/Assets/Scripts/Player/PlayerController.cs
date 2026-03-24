@@ -3,13 +3,16 @@ using UnityEngine;
 public class PlayerController : Movable
 {
     [SerializeField] float sprintAcceleration = 6f;
+    [SerializeField] Joystick joystick;
     Vector2 movement = Vector2.zero;
     void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.E))
             MobsManager.CreateMob(Vector2.zero, "Mob");
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        movement = joystick.Direction;
         if (!Visual.IsSprinting)
             Run(movement);
         if (Input.GetKeyDown(KeyCode.Space))

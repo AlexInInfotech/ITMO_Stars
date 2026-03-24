@@ -14,7 +14,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] MapCharcteristics riverMapCharac;
     [SerializeField] MapCharcteristics biomMapCharac;
     [SerializeField] Transform playerTransform;
-    [SerializeField] const byte mapScale = 10;
+    [SerializeField] float LoadRadius;
+    [SerializeField] const byte mapScale = 30;
     public const int tileMapWidth = 4 * mapScale;
     public const int typeMapWidth = tileMapWidth + 4;
     //FloatMap map = new FloatMap();
@@ -23,9 +24,10 @@ public class MapManager : MonoBehaviour
     ////[SerializeField] int offsetScale;
     ///
     Vector2Int offset;
-    WorldUnit CurrentUnit;
-
+    Vector2Int transitOffset;
+    WorldUnit currentUnit;
    
+
     private void SetConst()
     {
         MapGenerator.SetMapsCharcteristics(mainMapCharc, riverMapCharac, biomMapCharac);
@@ -33,11 +35,11 @@ public class MapManager : MonoBehaviour
     private void Start()
     {
         SetConst();
-        CurrentUnit = WorldUnit.GetWorldUnit(Vector2Int.zero);
-        TileManager.PrintWorldUnit(CurrentUnit);
+        currentUnit = WorldUnit.GetWorldUnit(Vector2Int.zero);
+        TileManager.PrintWorldUnit(currentUnit);
         MapTransitions.SetMaterials(waterMaterial, sandMaterial, earthMaterial);
         //MapTransitions.spriteRenderer = spriteRenderer;
-        MapTransitions.UpdateTransitMap(CurrentUnit.Coord);
+        MapTransitions.UpdateTransitMap(currentUnit.Coord);
         //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
         //visualisation.RenderMap(map.width, map.values);
         //PrintBigMap();
@@ -50,30 +52,58 @@ public class MapManager : MonoBehaviour
 
         //PrintBigMap();
         //SetConst();
+        UpdateCurrentUnit();
 
-      
-
-        //  CheckOffset(new Vector2(x,u)); 
-        //  RiverMapCharac = new MapCharcteristics(river_seed, river_scale, river_octaves, river_persistence, river_lacunarity);
-
-        if (playerTransform.position.x <= CurrentUnit.Coord.x * tileMapWidth)
+        if (playerTransform.position.x <= currentUnit.Coord.x * tileMapWidth + LoadRadius)
             offset.x = -1;
-        if (playerTransform.position.x >= (CurrentUnit.Coord.x + 1) * tileMapWidth)
+        if (playerTransform.position.x >= (currentUnit.Coord.x + 1) * tileMapWidth - LoadRadius)
             offset.x = 1;
-        if (playerTransform.position.y <= CurrentUnit.Coord.y * tileMapWidth)
+        if (playerTransform.position.y <= currentUnit.Coord.y * tileMapWidth + LoadRadius)
             offset.y = -1;
-        if (playerTransform.position.y >= (CurrentUnit.Coord.y + 1) * tileMapWidth)
+        if (playerTransform.position.y >= (currentUnit.Coord.y + 1) * tileMapWidth - LoadRadius)
             offset.y = 1;
+
         if (offset != new Vector2Int(0, 0))
         {
-            CurrentUnit = WorldUnit.GetWorldUnit(CurrentUnit.Coord + offset);
-            if (!CurrentUnit.IsActive)
-                TileManager.PrintWorldUnit(CurrentUnit);
+            Vector2Int offsetX = new Vector2Int(offset.x, 0);
+            Vector2Int offsetY = new Vector2Int(0, offset.y);
+            if (!WorldUnit.GetWorldUnit(currentUnit.Coord + offsetX).IsActive)
+                TileManager.PrintWorldUnit(WorldUnit.GetWorldUnit(currentUnit.Coord + offsetX));
+            if (!WorldUnit.GetWorldUnit(currentUnit.Coord + offsetY).IsActive)
+                TileManager.PrintWorldUnit(WorldUnit.GetWorldUnit(currentUnit.Coord + offsetY));
+            if (!WorldUnit.GetWorldUnit(currentUnit.Coord + offsetY+ offsetX).IsActive)
+                TileManager.PrintWorldUnit(WorldUnit.GetWorldUnit(currentUnit.Coord + offsetY+ offsetX));
             // WorldUnit.ClearFarUnits(CurrentUnit.Coord);
-            MapTransitions.UpdateTransitMap(CurrentUnit.Coord);
+            transitOffset = Vector2Int.zero;
+            if (offset.x < 0)
+                transitOffset.x = -1;
+            if (offset.y < 0)
+                transitOffset.y = -1;
+            MapTransitions.UpdateTransitMap(currentUnit.Coord + transitOffset);
+            //Debug.Log(currentUnit.Coord + transitOffset);
             offset.x = 0;
             offset.y = 0;
         }
+    }
+    private void UpdateCurrentUnit()
+    {
+        if (playerTransform.position.x <= currentUnit.Coord.x * tileMapWidth)
+            offset.x = -1;
+        if (playerTransform.position.x >= (currentUnit.Coord.x + 1) * tileMapWidth)
+            offset.x = 1;
+        if (playerTransform.position.y <= currentUnit.Coord.y * tileMapWidth)
+            offset.y = -1;
+        if (playerTransform.position.y >= (currentUnit.Coord.y + 1) * tileMapWidth)
+            offset.y = 1;
+        if (offset != new Vector2Int(0, 0))
+        {
+            currentUnit = WorldUnit.GetWorldUnit(currentUnit.Coord + offset);
+            Debug.Log("Change Unit ");
+            if (!currentUnit.IsActive)
+                TileManager.PrintWorldUnit(currentUnit);
+        }
+        offset.x = 0;
+        offset.y = 0;
     }
     //void PrintBigMap()
     //{
