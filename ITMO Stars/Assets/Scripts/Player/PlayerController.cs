@@ -12,7 +12,7 @@ public class PlayerController : Movable
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        movement = joystick.Direction;
+        //movement = joystick.Direction;
         if (!Visual.IsSprinting)
             Run(movement);
         if (Input.GetKeyDown(KeyCode.Space))

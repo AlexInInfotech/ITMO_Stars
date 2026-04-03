@@ -126,6 +126,7 @@ public class MobsManager : MonoBehaviour
         if (mob == null)
         {
             mob = new Mob(Instantiate(dictionary["0" + cluster].gameObject, Position, new Quaternion()));
+            Debug.Log(mob);
             mob.gameObject.name = i+cluster;
             mob.gameObject.transform.SetParent(managerTransform);
             ActivateMob(mob, Position, mobInfo, enemyInfo);

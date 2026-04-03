@@ -5,7 +5,7 @@ public class MapManager : MonoBehaviour
     //[SerializeField] MapRender visualisation;
     //[SerializeField] MapRender bigCart;
 
-    public SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
+    //public SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
     [SerializeField] Material waterMaterial;
     [SerializeField] Material sandMaterial;
     [SerializeField] Material earthMaterial;
@@ -15,7 +15,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] MapCharcteristics biomMapCharac;
     [SerializeField] Transform playerTransform;
     [SerializeField] float LoadRadius;
-    [SerializeField] const byte mapScale = 30;
+    const byte mapScale = 30;
     public const int tileMapWidth = 4 * mapScale;
     public const int typeMapWidth = tileMapWidth + 4;
     //FloatMap map = new FloatMap();
@@ -39,7 +39,7 @@ public class MapManager : MonoBehaviour
         TileManager.PrintWorldUnit(currentUnit);
         MapTransitions.SetMaterials(waterMaterial, sandMaterial, earthMaterial);
         //MapTransitions.spriteRenderer = spriteRenderer;
-        MapTransitions.UpdateTransitMap(currentUnit.Coord);
+        MapTransitions.UpdateTransitMap(currentUnit.Coord, true);
         //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
         //visualisation.RenderMap(map.width, map.values);
         //PrintBigMap();
@@ -48,7 +48,7 @@ public class MapManager : MonoBehaviour
     private void Update()
     {
         //MapGenerator.GeneratePerlinMaps(ref map, ref biom, MiniOffset);
-        //visualisation.RenderMap(map.width, map.values);
+        //visualisation.RenderMap(currentUnit.width, map.values);
 
         //PrintBigMap();
         //SetConst();
@@ -67,6 +67,7 @@ public class MapManager : MonoBehaviour
         {
             Vector2Int offsetX = new Vector2Int(offset.x, 0);
             Vector2Int offsetY = new Vector2Int(0, offset.y);
+            bool IsNewUnitCreated = !WorldUnit.GetWorldUnit(currentUnit.Coord + offsetX).IsActive || !WorldUnit.GetWorldUnit(currentUnit.Coord + offsetY).IsActive || !WorldUnit.GetWorldUnit(currentUnit.Coord + offsetY + offsetX).IsActive;
             if (!WorldUnit.GetWorldUnit(currentUnit.Coord + offsetX).IsActive)
                 TileManager.PrintWorldUnit(WorldUnit.GetWorldUnit(currentUnit.Coord + offsetX));
             if (!WorldUnit.GetWorldUnit(currentUnit.Coord + offsetY).IsActive)
@@ -79,7 +80,7 @@ public class MapManager : MonoBehaviour
                 transitOffset.x = -1;
             if (offset.y < 0)
                 transitOffset.y = -1;
-            MapTransitions.UpdateTransitMap(currentUnit.Coord + transitOffset);
+            MapTransitions.UpdateTransitMap(currentUnit.Coord + transitOffset, IsNewUnitCreated);
             //Debug.Log(currentUnit.Coord + transitOffset);
             offset.x = 0;
             offset.y = 0;
@@ -98,7 +99,6 @@ public class MapManager : MonoBehaviour
         if (offset != new Vector2Int(0, 0))
         {
             currentUnit = WorldUnit.GetWorldUnit(currentUnit.Coord + offset);
-            Debug.Log("Change Unit ");
             if (!currentUnit.IsActive)
                 TileManager.PrintWorldUnit(currentUnit);
         }
