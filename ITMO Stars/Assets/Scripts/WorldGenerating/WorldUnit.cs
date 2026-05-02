@@ -2,20 +2,30 @@ using UnityEngine;
 using System.Collections.Generic;
 public class WorldUnit
 {
-    public Vector2Int Coord;
+    public Vector2Int coord;
     //public TileType[] TypeMap;
     //public BiomType[] BiomTypeMap;
-    public GroundData[] TilesData;
+    public GroundData[] tilesData;
     public Color[] transitMap;
-    public bool IsActive = false;
+    public Surround[] surrounds;
+    public bool isActive = false;
+
+
+
     private static Dictionary<Vector2Int, WorldUnit> dictionary = new Dictionary<Vector2Int, WorldUnit>();
     private WorldUnit(Vector2Int _Coord)
     {
-        Coord = _Coord;
+        coord = _Coord;
         FloatMap MainMap = new FloatMap();
         FloatMap BiomMap = new FloatMap();
-        MapGenerator.GeneratePerlinMaps(ref MainMap, ref BiomMap, Coord);
-        TilesData = Convecter.GetGroundData(MainMap, BiomMap, out transitMap);
+        MapGenerator.GenerateBaseMaps(ref MainMap, ref BiomMap, coord);
+        tilesData = Convecter.GetGroundData(MainMap, BiomMap, out transitMap);
+        surrounds = EnvitonmentControl.GetSurrounds(_Coord, MainMap, BiomMap);
+    }
+    public void PrintUnit()
+    {
+        TileManager.PrintTiles(this);
+        EnvironmentManager.PrintSurrounds(this);
     }
     public static bool ExsistWorldUnit(Vector2Int Coord)
     {
@@ -26,11 +36,11 @@ public class WorldUnit
     {
         foreach (var unit in dictionary)
         {
-            if (unit.Value.IsActive
+            if (unit.Value.isActive
                 && (unit.Key.x < CurrentCoord.x - 1) || (unit.Key.x > CurrentCoord.x + 1)
                 || (unit.Key.y < CurrentCoord.y - 1) || (unit.Key.y > CurrentCoord.y + 1))
             {
-                unit.Value.IsActive = false;
+                unit.Value.isActive = false;
                 TileManager.ClearPart(unit.Key);
             }
         }

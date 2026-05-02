@@ -49,15 +49,15 @@ public class TileManager : MonoBehaviour
         earthTilemap = _EarthTilemap;
 
     }
-    private void Update()
-    {
+    //private void Update()
+    //{
 
-        RiverLow = _RiverLow;
-        RiverHight = _RiverHight;
-        BiomLow = _BiomLow;
-        WaterHight = _WaterHight;
-        SandHight = _SandHight;
-    }
+    //    RiverLow = _RiverLow;
+    //    RiverHight = _RiverHight;
+    //    BiomLow = _BiomLow;
+    //    WaterHight = _WaterHight;
+    //    SandHight = _SandHight;
+    //}
     public static BiomType GetBiomType(float color)
     {
         if (color <= (int)BiomType.atlantic)
@@ -83,46 +83,46 @@ public class TileManager : MonoBehaviour
     {
         return color >= BiomLow;
     }
-    public static TileType GetTileType(Vector2 WorldCoord, FloatMap map)
-    {
-        int ArrayCoord = ((int)WorldCoord.x + map.width * (int)WorldCoord.y) / map.size;
-        return GetTileType(map.values[ArrayCoord]);
-    }
+    //public static TileType GetTileType(Vector2 WorldCoord, FloatMap map)
+    //{
+    //    int ArrayCoord = ((int)WorldCoord.x + map.width * (int)WorldCoord.y) / map.size;
+    //    return GetTileType(map.values[ArrayCoord]);
+    //}
 
 
-    public static void PrintWorldUnit(WorldUnit unit)
+    public static void PrintTiles(WorldUnit unit)
     {
-        Vector3Int[] WaterPos = new Vector3Int[unit.TilesData.Length];
-        Vector3Int[] SandPos = new Vector3Int[unit.TilesData.Length];
-        Vector3Int[] EarthPos = new Vector3Int[unit.TilesData.Length];
-        TileBase[] WaterBases = new TileBase[unit.TilesData.Length];
-        TileBase[] SandBases = new TileBase[unit.TilesData.Length];
-        TileBase[] EarthBases = new TileBase[unit.TilesData.Length];
+        Vector3Int[] WaterPos = new Vector3Int[unit.tilesData.Length];
+        Vector3Int[] SandPos = new Vector3Int[unit.tilesData.Length];
+        Vector3Int[] EarthPos = new Vector3Int[unit.tilesData.Length];
+        TileBase[] WaterBases = new TileBase[unit.tilesData.Length];
+        TileBase[] SandBases = new TileBase[unit.tilesData.Length];
+        TileBase[] EarthBases = new TileBase[unit.tilesData.Length];
         int WaterI = 0;
         int SandI = 0;
         int EarthI = 0;
-        int OffsetX = MapManager.tileMapWidth * unit.Coord.x;
-        int OffsetY = MapManager.tileMapWidth * unit.Coord.y;
+        int OffsetX = MapManager.tileMapWidth * unit.coord.x;
+        int OffsetY = MapManager.tileMapWidth * unit.coord.y;
         for (int y = 0; y < MapManager.tileMapWidth; y++)
             for (int x = 0; x < MapManager.tileMapWidth; x++)
-                switch (unit.TilesData[x + y * MapManager.tileMapWidth].tileType)
+                switch (unit.tilesData[x + y * MapManager.tileMapWidth].tileType)
                 {
                     case TileType.water:
                         WaterPos[WaterI].x = OffsetX + x;
                         WaterPos[WaterI].y = OffsetY + y;
-                        WaterBases[WaterI] = unit.TilesData[x + y * MapManager.tileMapWidth].tileBase;
+                        WaterBases[WaterI] = unit.tilesData[x + y * MapManager.tileMapWidth].tileBase;
                         WaterI++;
                         break;
                     case TileType.sand:
                         SandPos[SandI].x = OffsetX + x;
                         SandPos[SandI].y = OffsetY + y;
-                        SandBases[SandI] = unit.TilesData[x + y * MapManager.tileMapWidth].tileBase;
+                        SandBases[SandI] = unit.tilesData[x + y * MapManager.tileMapWidth].tileBase;
                         SandI++;
                         break;
                     case TileType.earth:
                         EarthPos[EarthI].x = OffsetX + x;
                         EarthPos[EarthI].y = OffsetY + y;
-                        EarthBases[EarthI] = unit.TilesData[x + y * MapManager.tileMapWidth].tileBase;
+                        EarthBases[EarthI] = unit.tilesData[x + y * MapManager.tileMapWidth].tileBase;
                         EarthI++;
                         break;
                 }
@@ -132,7 +132,7 @@ public class TileManager : MonoBehaviour
         //for (int y = 0; y < MapManager.tileMapWidth; y++)
         //    for (int x = 0; x < MapManager.tileMapWidth; x++)
         //        GetTileMap(unit.TilesData[x + y * MapManager.tileMapWidth].tileType).SetColor(new Vector3Int(x + OffsetX, y + OffsetY), unit.TilesData[x + y * MapManager.tileMapWidth].color);
-        unit.IsActive = true;
+        unit.isActive = true;
 
     }
 

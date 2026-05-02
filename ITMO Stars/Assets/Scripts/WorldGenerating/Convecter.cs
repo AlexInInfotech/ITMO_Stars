@@ -20,6 +20,36 @@ public static class Convecter
                 Bioms[x + y * (MapManager.typeMapWidth)] = TileManager.GetBiomType(BiomMap.values[x / BiomMap.size + (y / BiomMap.size) * BiomMap.width]);
             }
     }
+    public static EnvironmentType[] FloatToType(FloatMap environmentMap, ref int countElement)
+    {
+        EnvironmentType[] types = new EnvironmentType[environmentMap.width * environmentMap.width];
+        countElement = 0;
+        for (int y = 0; y < environmentMap.width; y++)
+            for (int x = 0; x < environmentMap.width; x++)
+            {
+                types[x + y * environmentMap.width] = EnvironmentManager.GetEnvironmentType(environmentMap.values[x / environmentMap.size + (y / environmentMap.size) * environmentMap.width]);
+                if (types[x + y * environmentMap.width] != EnvironmentType.none)
+                    countElement++;
+            }
+        return types;
+    }
+    //public static EnvironmentType[] FloatToType(FloatMap baseMap, FloatMap environmentMap, ref byte countElement)
+    //{
+    //    EnvironmentType[] types = new EnvironmentType[environmentMap.width * environmentMap.width];
+    //    countElement = 0;
+    //    for (int y = 0; y < environmentMap.width; y++)
+    //        for (int x = 0; x < environmentMap.width; x++)
+    //        {
+    //            if (TileManager.GetTileType(baseMap.values[x / baseMap.size + (y / baseMap.size) * baseMap.width]) == TileType.water)
+    //                types[x + y * environmentMap.width] = EnvironmentType.none;
+    //            else
+    //                types[x + y * environmentMap.width] = EnvironmentManager.GetEnvironmentType(environmentMap.values[x / environmentMap.size + (y / environmentMap.size) * environmentMap.width]);
+                
+    //            if (types[x + y * environmentMap.width] != EnvironmentType.none)
+    //                countElement++;
+    //        }
+    //    return types;
+    //}
     public static GroundData[] GetGroundData(FloatMap MainMap, FloatMap BiomMap, out Color[] transitMap)
     {
         TileType[] types = new TileType[MapManager.typeMapWidth * MapManager.typeMapWidth];

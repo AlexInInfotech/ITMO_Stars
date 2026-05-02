@@ -6,52 +6,64 @@ public static class MapGenerator
     private static MapCharcteristics mainMapCharac;
     private static MapCharcteristics riverMapCharac;
     private static MapCharcteristics biomMapCharac;
+    private static MapCharcteristics environmentMapCharac;
 
+    public const byte envirMapSize = 1;
     public const byte mainMapSize = 2;
     public const byte biomMapSize = 4;
-    public static void SetMapsCharcteristics(MapCharcteristics _MainMapCharac, MapCharcteristics _RiverMapCharac, MapCharcteristics _BiomMapCharac)
+    public static void SetMapsCharcteristics(MapCharcteristics _MainMapCharac, MapCharcteristics _RiverMapCharac, MapCharcteristics _BiomMapCharac, MapCharcteristics _environmentMapCharac)
     {
         mainMapCharac = _MainMapCharac;
         riverMapCharac = _RiverMapCharac;
         biomMapCharac = _BiomMapCharac;
+        environmentMapCharac = _environmentMapCharac;
     }
 
-    public static void GeneratePerlinMaps(ref FloatMap MainMap, ref FloatMap BiomMap, Vector2Int Coord)
-    {
-        MainMap.size = mainMapSize;
-        BiomMap.size = biomMapSize;
-        MainMap.width = (MapManager.tileMapWidth) / mainMapSize + 2;
-        BiomMap.width = (MapManager.tileMapWidth ) / biomMapSize+ 2;
-        MainMap.values = GetFloatMap(MainMap.width, mainMapCharac, Coord* (MainMap.width-2));
-        float[] RiverMap = GetFloatMap(MainMap.width, riverMapCharac, Coord * (MainMap.width - 2));
-        UniteMainWithRiver(MainMap.values, RiverMap);
-        float[][] BiomsMaps = new float[1][];
-        BiomsMaps[0] =  GetFloatMap(BiomMap.width, biomMapCharac, Coord*(BiomMap.width-2));
-        BiomMap.values = MapGenerator.UniteBioms(BiomMap.width, BiomsMaps);
-
-    }
-    //public static void BigCart(ref FloatMap MainMap, ref FloatMap BiomMap, Vector2Int Coord)
+    //public static void GenerateBaseMaps(ref FloatMap MainMap, ref FloatMap BiomMap, Vector2Int Coord)
     //{
     //    MainMap.size = mainMapSize;
     //    BiomMap.size = biomMapSize;
-    //    MainMap.width = ((MapManager.tileMapWidth) / mainMapSize + 2)*10;
-    //    BiomMap.width = ((MapManager.tileMapWidth) / biomMapSize + 2)*10;
-    //    MainMap.values = GetFloatMap(MainMap.width, mainMapCharac, Coord * (MainMap.width - 2));
-    //    BiomMap.values = GetFloatMap(BiomMap.width, biomMapCharac, Coord * (BiomMap.width - 2));
-    //    float[] RiverMap = GetFloatMap(MainMap.width, riverMapCharac, Coord * (MainMap.width - 2));
-    //    // BiomMaps[2] = MapGenerator.Generate(BiomMap.width, BloodMapCharac, Coord * OffsetBiom);
-
-    //    MapGenerator.UniteMainWithRiver(MainMap.values, RiverMap);
-    //    //BiomMap.floatArray = MapGenerator.UniteBioms(BiomMap.width, BiomMaps);
+    //    MainMap.width = (MapManager.tileMapWidth) / mainMapSize + 2;
+    //    BiomMap.width = (MapManager.tileMapWidth) / biomMapSize + 2;
+    //    MainMap.values = GetPerlinMap(MainMap.width, mainMapCharac, Coord * (MainMap.width - 2));
+    //    float[] RiverMap = GetPerlinMap(MainMap.width, riverMapCharac, Coord * (MainMap.width - 2));
+    //    UniteMainWithRiver(MainMap.values, RiverMap);
+    //    float[][] BiomsMaps = new float[1][];
+    //    BiomsMaps[0] = GetPerlinMap(BiomMap.width, biomMapCharac, Coord * (BiomMap.width - 2));
+    //    BiomMap.values = MapGenerator.UniteBioms(BiomMap.width, BiomsMaps);
 
     //}
+    public static void GenerateBaseMaps(ref FloatMap MainMap, ref FloatMap BiomMap, Vector2Int Coord)
+    {
+        MainMap = GenerateMap(mainMapSize, (MapManager.tileMapWidth) / mainMapSize + 2, mainMapCharac, Coord * (MainMap.width - 2));
+        BiomMap = GenerateMap(biomMapSize, (MapManager.tileMapWidth) / biomMapSize + 2, biomMapCharac, Coord * (BiomMap.width - 2));
+
+        float[] RiverMap = GetPerlinMap(MainMap.width, riverMapCharac, Coord * (MainMap.width - 2));
+        UniteMainWithRiver(MainMap.values, RiverMap);
+
+    }
+    public static FloatMap GenerateEnvironmentMap(Vector2Int coord)
+    {
+        return GenerateMap(envirMapSize, MapManager.tileMapWidth, environmentMapCharac, coord);
+    }
+  
+    private static FloatMap GenerateMap(int size, int width, MapCharcteristics charcteristics, Vector2Int coord)
+    {
+        
+        FloatMap map = new FloatMap();
+        map.size = size;
+        map.width = width;
+        map.values = GetPerlinMap(map.width, charcteristics, coord);
+        return map;
+    }
+
     private static void UniteMainWithRiver(float[] MainMap, float[] RiverMap)
     {
         for (int i = 0; i < MainMap.Length; i++)
             if (TileManager.IsItRiver(RiverMap[i]))
                 MainMap[i] = 0;
     }
-    private static float[] GetFloatMap(int width, MapCharcteristics mapCharac, Vector2Int offset)
+    private static float[] GetPerlinMap(int width, MapCharcteristics mapCharac, Vector2Int offset)
     {
         float[] Map = new float[width * width];
         System.Random RandomCreature = new System.Random(mapCharac.seed);

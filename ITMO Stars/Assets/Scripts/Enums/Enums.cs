@@ -4,10 +4,12 @@ public enum TileType
     sand,
     earth
 }
-public enum MapType
+public enum EnvironmentType
 {
-    Noise,
-    Color
+    none, 
+    bush = 0, 
+    tree,
+    CountElements
 }
 
 public enum TileForm
