@@ -8,7 +8,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] float attackRadius;
     [SerializeField] float attackValue;
     [SerializeField] LayerMask damagableLayer;
-    [SerializeField] Movable moveController => GetComponent<Movable>();
+     Movable moveController => GetComponent<Movable>();
     public void SetAttackStrength(float strength)
     {
         attackValue = strength;

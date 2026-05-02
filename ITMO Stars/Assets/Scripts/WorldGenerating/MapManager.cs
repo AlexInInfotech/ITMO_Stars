@@ -55,19 +55,19 @@ public class MapManager : MonoBehaviour
         //SetConst();
 
 
-        //UpdateCurrentUnit();
-        //LoadNearestUnits();
+        UpdateCurrentUnit();
+        LoadNearestUnits();
 
 
     }
-    private static BiomType GetBiomOnPosition(Vector2 position, WorldUnit unit)
+    public static BiomType GetBiomOnPosition(Vector2 localPosition, WorldUnit unit)
     {
-        int ArrayCoord = ((int)position.x + tileMapWidth * (int)position.y) / 1;
+        int ArrayCoord = ((int)localPosition.x + tileMapWidth * (int)localPosition.y) ;
         return (BiomType)(unit.transitMap[ArrayCoord].r * (int)BiomType.CountElements);
     }
-    private static TileType GetBaseOnPosition(Vector2 position, WorldUnit unit)
+    public static TileType GetBaseTypeOnPosition(Vector2 localPosition, WorldUnit unit)
     {
-        int ArrayCoord = ((int)position.x + tileMapWidth * (int)position.y) / 1;
+        int ArrayCoord = ((int)localPosition.x + tileMapWidth * (int)localPosition.y) / 1;
         return unit.tilesData[ArrayCoord].tileType;
     }
     private void LoadNearestUnits()
@@ -119,7 +119,7 @@ public class MapManager : MonoBehaviour
         {
             currentUnit = WorldUnit.GetWorldUnit(currentUnit.coord + offset);
             if (!currentUnit.isActive)
-                TileManager.PrintTiles(currentUnit);
+                currentUnit.PrintUnit();
         }
         offset.x = 0;
         offset.y = 0;

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fac80a2427a884eafbfe94d7648e5f, type: 3}
   m_Name: Tree
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentInfo
-  name: Tree
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 1, y: 1}
+  AnimatorController: {fileID: 0}
+  environmentType: 1
+  baseType: 2
+  biomtype: 0
   MaxHealth: 1
   sprites:
   - {fileID: 4819569951777854467, guid: 1a791ef8f6aae4c4ba7ba97ec0e9be52, type: 3}

@@ -35,8 +35,8 @@ public static class MapGenerator
     //}
     public static void GenerateBaseMaps(ref FloatMap MainMap, ref FloatMap BiomMap, Vector2Int Coord)
     {
-        MainMap = GenerateMap(mainMapSize, (MapManager.tileMapWidth) / mainMapSize + 2, mainMapCharac, Coord * (MainMap.width - 2));
-        BiomMap = GenerateMap(biomMapSize, (MapManager.tileMapWidth) / biomMapSize + 2, biomMapCharac, Coord * (BiomMap.width - 2));
+        MainMap = GenerateMap(mainMapSize, (MapManager.tileMapWidth) / mainMapSize + 2, mainMapCharac, Coord * (MapManager.tileMapWidth) / mainMapSize);
+        BiomMap = GenerateMap(biomMapSize, (MapManager.tileMapWidth) / biomMapSize + 2, biomMapCharac, Coord * (MapManager.tileMapWidth) / biomMapSize);
 
         float[] RiverMap = GetPerlinMap(MainMap.width, riverMapCharac, Coord * (MainMap.width - 2));
         UniteMainWithRiver(MainMap.values, RiverMap);

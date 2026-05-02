@@ -11,7 +11,7 @@ public static class TilePallet
     //public static TileKit WaterKit = new TileKit();
     //public static TileKit SandKit = new TileKit();
     //public static TileKit EarthKit = new TileKit();
-    public static TileKit DefaultKit = new TileKit();
+    public static TileKit DefaultKit;
 
     public static TileBase GetTileBase(TileForm tileform)
     {

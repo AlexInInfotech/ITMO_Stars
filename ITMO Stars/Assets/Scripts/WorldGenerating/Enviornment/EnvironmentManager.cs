@@ -34,7 +34,7 @@ public class EnvironmentManager : MonoBehaviour
             return elementInfo[name];
         return null;
     }
-    void Start()
+    void Awake()
     {
         string name = "";
         bushLow = _bushLow;
@@ -45,8 +45,10 @@ public class EnvironmentManager : MonoBehaviour
             elementInfo[name] = inf;
         }
         for (int i = 0; i < transform.childCount; i++)
+        {
+            Debug.Log(transform.GetChild(i).name);
             basesForElements[transform.GetChild(i).name] = new ElementBase(transform.GetChild(i).gameObject);
-
+        }
         managerTransform = GetComponent<Transform>();
     }
     public static EnvironmentType GetEnvironmentType(float value)
@@ -62,11 +64,20 @@ public class EnvironmentManager : MonoBehaviour
     {
         foreach (Surround surround in unit.surrounds)
         {
-            Debug.Log(surround);
+            //Debug.Log(surround);
             SetSurround(surround, unit.coord);
         }
     }
-
+    //public static void Test()
+    //{
+    //    Surround surround = new Surround();
+    //    surround.name = GetSurroundName(EnvironmentType.tree, TileType.earth, BiomType.usual);
+    //    surround.state = EnviromentState.unharmed;
+    //    surround.position = new Vector2(0, 0);
+    //    SetSurround(surround, new Vector2Int(0, 0));
+    //    SetSurround(surround, new Vector2Int(0, 0));
+    //    SetSurround(surround, new Vector2Int(0, 0));
+    //}
 
     private static void SetSurround(Surround surround, Vector2Int unitCoord)
     {
@@ -78,17 +89,17 @@ public class EnvironmentManager : MonoBehaviour
         {
             elementBase = basesForElements[i.ToString() + ELEMENT];
             if (!elementBase.IsActive)
-                ActivateElement(elementBase, surround);
+                ActivateElement(elementBase, surround, unitCoord);
             else
                 elementBase = null;
             i++;
         }
         if (elementBase == null)
         {
-            elementBase = new ElementBase(Instantiate(basesForElements["0" + ELEMENT].gameObject, unitCoord*MapManager.tileMapWidth+surround.position, new Quaternion()));
+            elementBase = new ElementBase(Instantiate(basesForElements["0" + ELEMENT].gameObject, unitCoord*MapManager.tileMapWidth+surround.localPosition, new Quaternion()));
             elementBase.gameObject.name = i + ELEMENT;
             elementBase.gameObject.transform.SetParent(managerTransform);
-            ActivateElement(elementBase, surround);
+            ActivateElement(elementBase, surround, unitCoord);
             basesForElements.Add(i + ELEMENT, elementBase);
         }
     }
@@ -103,12 +114,12 @@ public class EnvironmentManager : MonoBehaviour
         // Base.GetComponentInChildren<SpriteRenderer>().color= new Color(0, 0, 0);
     }
 
-    private static void ActivateElement(ElementBase mob, Surround surround)
+    private static void ActivateElement(ElementBase element, Surround surround, Vector2Int unitCoord)
     {
-        mob.gameObject.SetActive(true);
-        mob.IsActive = true;
-        mob.gameObject.transform.position = surround.position;
-        ApplyInfoToBase(mob.gameObject, surround.name, surround.state);
+        element.gameObject.SetActive(true);
+        element.IsActive = true;
+        element.gameObject.transform.position = new Vector2(surround.localPosition.x + unitCoord.x*MapManager.tileMapWidth, surround.localPosition.y + unitCoord.y * MapManager.tileMapWidth);
+        ApplyInfoToBase(element.gameObject, surround.name, surround.state);
     }
     private static void DeleteElement(GameObject gameObject)
     {
