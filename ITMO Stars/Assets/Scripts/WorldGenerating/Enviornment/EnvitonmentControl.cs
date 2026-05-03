@@ -7,8 +7,6 @@ public static class EnvitonmentControl
     {
         int len = 0;
         int i = 0;
-        TileType type = TileType.water;
-        BiomType biom = BiomType.usual;
         FloatMap map = MapGenerator.GenerateEnvironmentMap(coord);
         EnvironmentType[] types = Convecter.FloatToType(map, ref len);
         Surround[] surrounds = new Surround[len];

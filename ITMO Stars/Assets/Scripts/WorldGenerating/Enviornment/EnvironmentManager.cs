@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnvironmentManager : MonoBehaviour
@@ -7,12 +9,17 @@ public class EnvironmentManager : MonoBehaviour
     //private static EnvironmentInfo[] elementInfo;
     public static float bushLow;
     public static float treeLow;
+    public static float bushHight;
+    public static float treeHight;
+    public float _bushHight;
+    public float _treeHight;
     public float _bushLow;
     public float _treeLow;
     private class ElementBase
     {
         public GameObject gameObject;
         public bool IsActive = false;
+        public Surround currentSurround;
         public ElementBase(GameObject _gameObject)
         {
             gameObject = _gameObject;
@@ -23,6 +30,23 @@ public class EnvironmentManager : MonoBehaviour
     private static Dictionary<string, ElementBase> basesForElements = new Dictionary<string, ElementBase>();
     private static Transform managerTransform;
     const string ELEMENT = "Element";
+   
+    void Awake()
+    {
+        string name = "";
+        bushLow = _bushLow;
+        bushHight = _bushHight;
+        treeLow = _treeLow;
+        treeHight = _treeHight;
+        foreach (EnvironmentInfo inf in _elementInfo)
+        {
+            name = inf.environmentType.ToString() + inf.baseType.ToString()+ inf.biomtype.ToString();
+            elementInfo[name] = inf;
+        }
+        for (int i = 0; i < transform.childCount; i++)
+            basesForElements[transform.GetChild(i).name] = new ElementBase(transform.GetChild(i).gameObject);
+        managerTransform = GetComponent<Transform>();
+    }
     public static string GetSurroundName(EnvironmentType environmentType,TileType baseType, BiomType biomtype)
     {
         return environmentType.ToString() + baseType.ToString() +  biomtype.ToString();
@@ -34,31 +58,13 @@ public class EnvironmentManager : MonoBehaviour
             return elementInfo[name];
         return null;
     }
-    void Awake()
-    {
-        string name = "";
-        bushLow = _bushLow;
-        treeLow = _treeLow;
-        foreach (EnvironmentInfo inf in _elementInfo)
-        {
-            name = inf.environmentType.ToString() + inf.baseType.ToString()+ inf.biomtype.ToString();
-            elementInfo[name] = inf;
-        }
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Debug.Log(transform.GetChild(i).name);
-            basesForElements[transform.GetChild(i).name] = new ElementBase(transform.GetChild(i).gameObject);
-        }
-        managerTransform = GetComponent<Transform>();
-    }
     public static EnvironmentType GetEnvironmentType(float value)
     {
-        if (value < bushLow)
-            return EnvironmentType.none;
-        else if (value < treeLow)
+        if (bushLow < value && value < bushHight)
             return EnvironmentType.bush;
-        else
+        else if (treeLow < value && value < treeHight)
             return EnvironmentType.tree;
+        return EnvironmentType.none;
     }
     public static void PrintSurrounds(WorldUnit unit)
     {
@@ -78,12 +84,16 @@ public class EnvironmentManager : MonoBehaviour
     //    SetSurround(surround, new Vector2Int(0, 0));
     //    SetSurround(surround, new Vector2Int(0, 0));
     //}
-
+    public static void ChangeSurroundstate(string name, EnviromentState state)
+    {
+        basesForElements[name].currentSurround.state = state;
+        ApplyInfoToBase(basesForElements[name].gameObject, basesForElements[name].currentSurround.name, state);
+    }
     private static void SetSurround(Surround surround, Vector2Int unitCoord)
     {
         if (GetElementInfo(surround.name) == null)
             return;
-        byte i = 0;
+        int i = 0;
         ElementBase elementBase = null;
         while (elementBase == null && basesForElements.ContainsKey(i.ToString() + ELEMENT))
         {
@@ -103,10 +113,24 @@ public class EnvironmentManager : MonoBehaviour
             basesForElements.Add(i + ELEMENT, elementBase);
         }
     }
-
-    private static void ApplyInfoToBase(GameObject Base, string name, EnviromentState state = EnviromentState.unharmed)
+    public static void ClearSurrounds(Vector2Int unitCoord)
     {
-        EnvironmentInfo inf = GetElementInfo(name);
+        int i = 0;
+        while (basesForElements.ContainsKey(i.ToString() + ELEMENT))
+        {
+            //bool t = Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.x / MapManager.tileMapWidth) == unitCoord.x
+            //    && Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.y / MapManager.tileMapWidth) == unitCoord.y;
+            //Debug.Log(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position + "  " + MapManager.tileMapWidth + " " + unitCoord + "  " + t);
+            if (Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.x / MapManager.tileMapWidth) == unitCoord.x
+                && Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.y / MapManager.tileMapWidth) == unitCoord.y)
+                DeleteElement(i.ToString() + ELEMENT);
+            i++;
+        }
+    }
+    private static void ApplyInfoToBase(GameObject Base, string elementName, EnviromentState state = EnviromentState.unharmed)
+    {
+        EnvironmentInfo inf = GetElementInfo(elementName);
+        Base.gameObject.SetActive(true);
         Base.GetComponent<BoxCollider2D>().offset = inf.ColliderOffset;
         Base.GetComponent<BoxCollider2D>().size = inf.ColliderSize;
         Base.GetComponent<AbstractDamagable>().MaxHealth = inf.MaxHealth;
@@ -117,13 +141,13 @@ public class EnvironmentManager : MonoBehaviour
     private static void ActivateElement(ElementBase element, Surround surround, Vector2Int unitCoord)
     {
         element.gameObject.SetActive(true);
+        element.currentSurround = surround;
         element.IsActive = true;
         element.gameObject.transform.position = new Vector2(surround.localPosition.x + unitCoord.x*MapManager.tileMapWidth, surround.localPosition.y + unitCoord.y * MapManager.tileMapWidth);
         ApplyInfoToBase(element.gameObject, surround.name, surround.state);
     }
-    private static void DeleteElement(GameObject gameObject)
+    private static void DeleteElement(string name)
     {
-        string name = gameObject.name;
         basesForElements[name].IsActive = false;
         basesForElements[name].gameObject.SetActive(false);
     }

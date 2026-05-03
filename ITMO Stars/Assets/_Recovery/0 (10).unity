@@ -228,8 +228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnviornmentManager
   _elementInfo:
   - {fileID: 11400000, guid: d3306d2fa8f896840a0145064a223345, type: 2}
-  _bushHight: 0.51
-  _treeHight: 0.96
   _bushLow: 0.4
   _treeLow: 0.91
 --- !u!1 &418248187
@@ -377,10 +375,10 @@ MonoBehaviour:
   bottomPoint: {fileID: 1625759818}
   rightPoint: {fileID: 26686347}
   attackRadius: 4
-  attackValue: 10
+  attackValue: 0
   damagableLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!114 &418248193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,7 +937,7 @@ MonoBehaviour:
   biomMapCharac: {fileID: 11400000, guid: cd9ba5395505f634caaf455947d80b8f, type: 2}
   environmentMapCharac: {fileID: 11400000, guid: 4e1f8a641c416b3428f5c8e42adabc76, type: 2}
   playerTransform: {fileID: 418248188}
-  LoadRadius: 25
+  LoadRadius: 50
 --- !u!4 &880991940
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,6 +1048,11 @@ MonoBehaviour:
   _WaterHight: 0
   _SandHight: 0.46
   tilekit: {fileID: 11400000, guid: 7d1f56acd27e20b49babce08d09f5223, type: 2}
+--- !u!1 &990892649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4687461878203071252, guid: f25b32caf3614cc4ca479f235468dbeb, type: 3}
+  m_PrefabInstance: {fileID: 287146026595973485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1044402653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1137,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6253839775293087745, guid: f25b32caf3614cc4ca479f235468dbeb, type: 3}
   m_PrefabInstance: {fileID: 287146026595973485}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1090330511
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990892649}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1123576633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,7 +2528,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4687461878203071252, guid: f25b32caf3614cc4ca479f235468dbeb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1090330511}
   m_SourcePrefab: {fileID: 100100000, guid: f25b32caf3614cc4ca479f235468dbeb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

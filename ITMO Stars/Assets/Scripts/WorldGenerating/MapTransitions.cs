@@ -44,9 +44,9 @@ public static class MapTransitions
         earthMaterial.SetFloat(BIOMSCOUNT, (float)BiomType.CountElements);
     }
 
-    public static void UpdateTransitMap(Vector2Int LeftBottomUnitCoord, bool IsNewUnitCreated)
+    public static void UpdateTransitMap(Vector2Int LeftBottomUnitCoord)
     {
-       if (previousCoord == LeftBottomUnitCoord && !IsNewUnitCreated)
+       if (previousCoord == LeftBottomUnitCoord)
             return;
        for (int x= 0;  x < MapManager.tileMapWidth * 2; x++)
             for(int y= 0; y < MapManager.tileMapWidth * 2; y++)

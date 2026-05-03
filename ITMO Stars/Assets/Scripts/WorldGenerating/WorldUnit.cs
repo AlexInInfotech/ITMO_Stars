@@ -42,6 +42,7 @@ public class WorldUnit
             {
                 unit.Value.isActive = false;
                 TileManager.ClearPart(unit.Key);
+                EnvironmentManager.ClearSurrounds(unit.Key);
             }
         }
     }

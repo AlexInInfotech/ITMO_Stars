@@ -11,8 +11,9 @@ public class EnvironmentDamagable : AbstractDamagable
             injuryEffect.Play();
         if (health < 0)
         {
+            Debug.Log(this.name);
             health = MaxHealth;
-            // MobsManager.DeleteMob(gameObject);
+            EnvironmentManager.ChangeSurroundstate(this.name, EnviromentState.destroyed);
         }
     }
 }

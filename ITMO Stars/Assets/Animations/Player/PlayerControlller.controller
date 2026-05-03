@@ -111,7 +111,7 @@ AnimatorController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerControlller
-  serializedVersion: 5
+  serializedVersion: 6
   m_AnimatorParameters:
   - m_Name: IsRunning
     m_Type: 4
@@ -150,6 +150,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+  m_EvaluateTransitionsOnStart: 0
 --- !u!1102 &2782230780235954352
 AnimatorState:
   serializedVersion: 6
@@ -180,7 +181,7 @@ AnimatorState:
   m_TimeParameter: Vertical
 --- !u!1107 &2925086926987288125
 AnimatorStateMachine:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -228,7 +229,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.077338904
+  m_TransitionDuration: 0.023128651
   m_TransitionOffset: 0.17970836
   m_ExitTime: 0.98295534
   m_HasExitTime: 0

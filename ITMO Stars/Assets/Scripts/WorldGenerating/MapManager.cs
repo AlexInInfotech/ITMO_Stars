@@ -29,6 +29,7 @@ public class MapManager : MonoBehaviour
     WorldUnit currentUnit;
    
 
+
     private void SetConst()
     {
         MapGenerator.SetMapsCharcteristics(mainMapCharc, riverMapCharac, biomMapCharac, environmentMapCharac);
@@ -40,7 +41,7 @@ public class MapManager : MonoBehaviour
         currentUnit.PrintUnit();
         MapTransitions.SetMaterials(waterMaterial, sandMaterial, earthMaterial);
         //MapTransitions.spriteRenderer = spriteRenderer;
-        MapTransitions.UpdateTransitMap(currentUnit.coord, true);
+        MapTransitions.UpdateTransitMap(currentUnit.coord);
         //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
         //visualisation.RenderMap(map.width, map.values);
         //PrintBigMap();
@@ -92,13 +93,16 @@ public class MapManager : MonoBehaviour
                 WorldUnit.GetWorldUnit(currentUnit.coord + offsetY).PrintUnit();
             if (!WorldUnit.GetWorldUnit(currentUnit.coord + offsetY + offsetX).isActive)
                 WorldUnit.GetWorldUnit(currentUnit.coord + offsetY + offsetX).PrintUnit();
-            // WorldUnit.ClearFarUnits(CurrentUnit.Coord);
             transitOffset = Vector2Int.zero;
             if (offset.x < 0)
                 transitOffset.x = -1;
             if (offset.y < 0)
                 transitOffset.y = -1;
-            MapTransitions.UpdateTransitMap(currentUnit.coord + transitOffset, IsNewUnitCreated);
+            if (IsNewUnitCreated)
+            {
+                WorldUnit.ClearFarUnits(currentUnit.coord);
+                MapTransitions.UpdateTransitMap(currentUnit.coord + transitOffset);
+            }
             //Debug.Log(currentUnit.Coord + transitOffset);
             offset.x = 0;
             offset.y = 0;
