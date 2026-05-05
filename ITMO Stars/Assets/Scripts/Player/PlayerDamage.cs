@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerDamage : AbstractDamagable
 {
-    public override void GetDamage(float damage)
+    public override void GetDamage(int damage)
     {
         //health -= damage;
         //if (health < 0)
@@ -13,6 +13,6 @@ public class PlayerDamage : AbstractDamagable
     }
     private void Start()
     {
-        health = MaxHealth;
+        health = SavingManager.GetHealth();
     }
 }

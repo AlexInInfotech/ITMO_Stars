@@ -1,14 +1,14 @@
 using UnityEngine;
 public interface IDamagable 
     {
-        float health { get; set; }
+        int health { get; set; }
         void GetDamage(float damage) { }
     }
 public abstract class AbstractDamagable: MonoBehaviour, IDamagable
 {
-    public float health { get; set; }
-    [SerializeField] public float MaxHealth;
-    public abstract void GetDamage(float damage);
+    public int health { get; set; }
+    [SerializeField] public int MaxHealth;
+    public abstract void GetDamage(int damage);
 
     
 

@@ -6,10 +6,10 @@ public class AttackController : MonoBehaviour
     [SerializeField] Transform bottomPoint;
     [SerializeField] Transform rightPoint;
     [SerializeField] float attackRadius;
-    [SerializeField] float attackValue;
+    [SerializeField] int attackValue;
     [SerializeField] LayerMask damagableLayer;
      Movable moveController => GetComponent<Movable>();
-    public void SetAttackStrength(float strength)
+    public void SetAttackStrength(int strength)
     {
         attackValue = strength;
     }

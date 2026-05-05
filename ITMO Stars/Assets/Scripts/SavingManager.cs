@@ -1,48 +1,81 @@
 ﻿using System.IO;
 using UnityEngine;
 
-public class SavingManager : MonoBehaviour
+public static class SavingManager
 {
-//   using UnityEngine;
+    public static Transform playerTransform;
+    public static AbstractDamagable playerDamagable;
+    private class SaveInf
+    {
+        public Vector2 playerPosition;
+        public int playerHealth;
+        //public int baseSeed;
+        //public int biomSeed;
+        //public int envSeed;
+        //public int riverSeed;
 
-//public class SaveSystem : MonoBehaviour
-//{
-//    //
-//    public void SaveNickname(string key, string value)
-//    {
-//        PlayerPrefs.SetString(key, value);
-//        PlayerPrefs.Save(); // 
-//    }
+    }
 
-//    // 
-//    public string LoadNickname(string key)
-//    {
-//        if (PlayerPrefs.HasKey(key))
-//        {
-//            return PlayerPrefs.GetString(key);
-//        }
-//        return "Default Name"; // 
-//    }
-//}
+    private static SaveInf data = new SaveInf();
+    static string fileName = "Savings";
 
-//    using System.IO;
-//using UnityEngine;
+    //public static void SavePosition(string key, string value)
+    //{
+    //    PlayerPrefs.SetString(key, value);
+    //    PlayerPrefs.Save(); // 
+    //}   //    // 
+    //    public string LoadNickname(string key)
+    //    {
+    //        if (PlayerPrefs.HasKey(key))
+    //        {
+    //            return PlayerPrefs.GetString(key);
+    //        }
+    //        return "Default Name"; // 
+    //    }
+   
+    public static Vector2 GetPosition()
+    {
+        return data.playerPosition;
+    }
+    public static int GetHealth()
+    {
+        return data.playerHealth;
+    }
+ 
+    public static void SaveGame()
+    {
+        data.playerPosition = playerTransform.position;
+        data.playerHealth = playerDamagable.health;
 
-//public class SaveManager : MonoBehaviour
-//{
-//    public void SaveGame<T>(T data, string fileName)
-//    {
-//        // 1. Превращаем класс в строку JSON
-//        string json = JsonUtility.ToJson(data, true); // true сделает JSON читаемым
+        string json = JsonUtility.ToJson(data);
+        string path = Path.Combine(Application.persistentDataPath, fileName + ".json");
+        File.WriteAllText(path, json);
+        Debug.Log($"Данные сохранены в: {path}");
 
-//        // 2. Формируем путь (автоматически подстроится под ПК или Смартфон)
-//        string path = Path.Combine(Application.persistentDataPath, fileName + ".json");
+    }
+    //public T LoadData<T>(string fileName)
+    //{
+    //    string path = Path.Combine(Application.persistentDataPath, fileName);
 
-//        // 3. Записываем строку в файл. 
-//        // Если файла нет — метод создаст его. Если есть — перезапишет.
-//        File.WriteAllText(path, json);
+    //    if (File.Exists(path))
+    //    {
+    //        string json = File.ReadAllText(path);
+    //        return JsonUtility.FromJson<T>(json);
+    //    }
 
-//        Debug.Log($"Данные сохранены в: {path}");
-//    }
-//}
+    //    Debug.LogWarning("Файл сохранения не найден.");
+    //    return default;
+    //}
+    public static void LoadSaves()
+    {
+        string path = Path.Combine(Application.persistentDataPath, fileName + ".json");
+
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            data = JsonUtility.FromJson<SaveInf>(json);
+        }
+
+    }
+    
 }

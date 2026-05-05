@@ -10,7 +10,7 @@ public static class MapTransitions
     const string TRANSITCOORD = "_WorlCoordTransitMap";
     const string BIOMSCOUNT = "_BiomsCount";
     private static Color[] TransitMap = new Color[MapManager.tileMapWidth* MapManager.tileMapWidth*4];
-    private static Vector2Int previousCoord;
+    //private static Vector2Int previousCoord;
     static Material waterMaterial;
     static Material sandMaterial;
     static Material earthMaterial;
@@ -44,10 +44,8 @@ public static class MapTransitions
         earthMaterial.SetFloat(BIOMSCOUNT, (float)BiomType.CountElements);
     }
 
-    public static void UpdateTransitMap(Vector2Int LeftBottomUnitCoord)
+    public static void UpdateTransitMap(Vector2Int LeftBottomUnitCoord, bool ForseStart = false)
     {
-       if (previousCoord == LeftBottomUnitCoord)
-            return;
        for (int x= 0;  x < MapManager.tileMapWidth * 2; x++)
             for(int y= 0; y < MapManager.tileMapWidth * 2; y++)
             {
@@ -65,6 +63,5 @@ public static class MapTransitions
 
             }
         SetTransitionMap(new Vector4(LeftBottomUnitCoord.x, LeftBottomUnitCoord.y));
-        previousCoord = LeftBottomUnitCoord;
     }
 }

@@ -30,14 +30,17 @@ public class EnvironmentManager : MonoBehaviour
     private static Dictionary<string, ElementBase> basesForElements = new Dictionary<string, ElementBase>();
     private static Transform managerTransform;
     const string ELEMENT = "Element";
-   
-    void Awake()
+   private void SetConst()
     {
-        string name = "";
         bushLow = _bushLow;
         bushHight = _bushHight;
         treeLow = _treeLow;
         treeHight = _treeHight;
+    }
+    public void Preparing()
+    {
+        string name = "";
+        SetConst();
         foreach (EnvironmentInfo inf in _elementInfo)
         {
             name = inf.environmentType.ToString() + inf.baseType.ToString()+ inf.biomtype.ToString();

@@ -4,7 +4,7 @@ public class MobsDamagable : AbstractDamagable
 {
     AnimatorController animator => GetComponentInChildren<AnimatorController>();
     ParticleSystem injuryEffect = null;
-    public override void GetDamage(float damage)
+    public override void GetDamage(int damage)
     {
         health -= damage;
         animator.ShowInjury();

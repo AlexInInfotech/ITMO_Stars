@@ -8,7 +8,7 @@ public class MobInfo : ScriptableObject
     public Vector2 ColliderSize;
     public RuntimeAnimatorController AnimatorController;
     public float Speed;
-    public float MaxHealth;
+    public int MaxHealth;
 
 }
 

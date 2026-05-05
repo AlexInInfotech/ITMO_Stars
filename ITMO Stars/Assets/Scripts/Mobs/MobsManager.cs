@@ -1,5 +1,7 @@
     using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MobsManager : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class MobsManager : MonoBehaviour
     [SerializeField] EnemyInfo[] _enemies;
     private static MobInfo[] friendlyMobs;
     private static EnemyInfo[] enemies;
+    public static int mobSeed = 10;
+    public static int maxMobCount = 10;
     private class Mob
     {
         public GameObject gameObject;
@@ -22,7 +26,7 @@ public class MobsManager : MonoBehaviour
     const string FRIENDLYMOB = "FriendlyMob";
     const string ENEMY = "Enemy";
     
-    void Start()
+    public void Preparing()
     {
         friendlyMobs = _friendlyMobs;
         enemies = _enemies;
@@ -33,25 +37,52 @@ public class MobsManager : MonoBehaviour
                 basesForEnemies[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
         managerTransform = GetComponent<Transform>();
     }
+    public static void DeleteMob(GameObject gameObject)
+    {   
+        string name = gameObject.name;
+        if (IsMobFriendly(name))
+        {
+            basesForFriendlyMobs[name].IsActive = false;
+            basesForFriendlyMobs[name].gameObject.SetActive(false);
+        }
+        else
+        {
+            basesForEnemies[name].IsActive = false;
+            basesForEnemies[name].gameObject.SetActive(false);
+        }
+    }
+    public static void PrintMobCluster(MobsCluster cluster)
+    {
+        for (int i = 0; i < cluster.mobsCount; i++)
+            CreateMob(cluster.position, cluster.mobName);
+    }
+    public static string GetRandomMobName(int rand)
+    {
+        //MobInfo[] inf = rand % 2 == 0 ? friendlyMobs : enemies;
+        MobInfo[] inf = enemies;
+        return inf[rand % inf.Length].MobName;
+    }
+    
     private static MobInfo GetFriendlyMobInfo(string name)
     {
         foreach (MobInfo info in friendlyMobs)
-            if (info.name == name)
+            if (info.MobName == name)
                 return info;
         return null;
     }
     private static EnemyInfo GetEnemyInfo(string name)
     {
         foreach (EnemyInfo info in enemies)
-            if (info.name == name)
+            if (info.MobName == name)
                 return info;
         return null;
     }
+
     private static bool IsMobFriendly(string mobName)
     {
-        foreach (MobInfo info in friendlyMobs)
-            if (info.name == mobName)
-                return true;
+        //    foreach (MobInfo info in friendlyMobs)
+        //        if (info.name == mobName)
+        //            return true;
         return false;
     }
     private static void ApplyInfoToBase(GameObject Base, MobInfo inf)
@@ -78,22 +109,9 @@ public class MobsManager : MonoBehaviour
         else
             ApplyInfoToBase(mob.gameObject, enemyInfo);
     }
-    public static void DeleteMob(GameObject gameObject)
-    {   
-        string name = gameObject.name;
-        if (IsMobFriendly(name))
-        {
-            basesForFriendlyMobs[name].IsActive = false;
-            basesForFriendlyMobs[name].gameObject.SetActive(false);
-        }
-        else
-        {
-            basesForEnemies[name].IsActive = false;
-            basesForEnemies[name].gameObject.SetActive(false);
-        }
-    }
+    
 
-    public static void CreateMob(Vector2 Position, string MobName)
+    private static void CreateMob(Vector2 Position, string MobName)
     {
         Mob mob = null;
         Dictionary<string, Mob> dictionary;
@@ -126,7 +144,6 @@ public class MobsManager : MonoBehaviour
         if (mob == null)
         {
             mob = new Mob(Instantiate(dictionary["0" + cluster].gameObject, Position, new Quaternion()));
-            Debug.Log(mob);
             mob.gameObject.name = i+cluster;
             mob.gameObject.transform.SetParent(managerTransform);
             ActivateMob(mob, Position, mobInfo, enemyInfo);

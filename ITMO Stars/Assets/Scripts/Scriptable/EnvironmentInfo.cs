@@ -9,7 +9,7 @@ public class EnvironmentInfo : ScriptableObject
     public EnvironmentType environmentType;
     public TileType baseType;
     public BiomType biomtype;
-    public float MaxHealth;
+    public int MaxHealth;
     public Sprite[] sprites;
 
 }

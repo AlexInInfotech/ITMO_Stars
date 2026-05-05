@@ -5,22 +5,40 @@ public class PlayerController : Movable
     [SerializeField] float sprintAcceleration = 6f;
     [SerializeField] Joystick joystick;
     Vector2 movement = Vector2.zero;
+
+    public void LoadPosition()
+    {
+        trans.position = SavingManager.GetPosition();
+    }
+
+    public void Attack()
+    {
+        Visual.ShowAttack(direction);
+
+    }
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            MobsManager.CreateMob(Vector2.zero, "Mob");
+        //if (Input.GetKeyDown(KeyCode.E))
+
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Debug.Log("CREATINg");
+        //    MobsManager.CreateMob(Vector2.zero, "skeletone");
+        //}
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        //movement = joystick.Direction;
+        movement = joystick.Direction;
         if (!Visual.IsSprinting)
             Run(movement);
+
+        if (Input.GetMouseButtonDown(0))
+            SavingManager.SaveGame();
+        //    Visual.ShowAttack(direction);
         if (Input.GetKeyDown(KeyCode.Space))
             Visual.ShowSprinting(direction);
         if (Visual.IsSprinting)
             rb.MovePosition(rb.position + direction * sprintAcceleration * Time.fixedDeltaTime);
-        if (Input.GetMouseButtonDown(0))
-            Visual.ShowAttack(direction);
     }
    
 }

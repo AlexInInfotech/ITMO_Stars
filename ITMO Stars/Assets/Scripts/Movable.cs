@@ -6,7 +6,7 @@ public class Movable : MonoBehaviour
     [SerializeField] protected AnimatorController Visual;
     [SerializeField]protected float speed = 5f;
     protected Rigidbody2D rb => this.GetComponent<Rigidbody2D>();
-    Transform trans => this.GetComponent<Transform>();
+    protected Transform trans => this.GetComponent<Transform>();
     public Vector2 direction { get; protected set; }
     protected void SetRotation()
     {

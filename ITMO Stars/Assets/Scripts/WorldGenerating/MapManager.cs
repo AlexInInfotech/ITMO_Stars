@@ -34,19 +34,31 @@ public class MapManager : MonoBehaviour
     {
         MapGenerator.SetMapsCharcteristics(mainMapCharc, riverMapCharac, biomMapCharac, environmentMapCharac);
     }
-    private void Start()
+    public void StartMap()
     {
         SetConst();
-        currentUnit = WorldUnit.GetWorldUnit(Vector2Int.zero);
+        Vector2Int startPosition = new Vector2Int(Mathf.FloorToInt(playerTransform.position.x / tileMapWidth), Mathf.FloorToInt(playerTransform.position.y / tileMapWidth));
+        currentUnit = WorldUnit.GetWorldUnit(startPosition);
         currentUnit.PrintUnit();
         MapTransitions.SetMaterials(waterMaterial, sandMaterial, earthMaterial);
         //MapTransitions.spriteRenderer = spriteRenderer;
         MapTransitions.UpdateTransitMap(currentUnit.coord);
-        //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
-        //visualisation.RenderMap(map.width, map.values);
-        //PrintBigMap();
 
     }
+    //private void Start()
+    //{
+    //    Vector2Int startPosition = new Vector2Int(Mathf.FloorToInt(playerTransform.position.x / tileMapWidth), Mathf.FloorToInt(playerTransform.position.y / tileMapWidth));
+    //    SetConst();
+    //    currentUnit = WorldUnit.GetWorldUnit(startPosition);
+    //    currentUnit.PrintUnit();
+    //    MapTransitions.SetMaterials(waterMaterial, sandMaterial, earthMaterial);
+    //    //MapTransitions.spriteRenderer = spriteRenderer;
+    //    MapTransitions.UpdateTransitMap(currentUnit.coord);
+    //    //MapGenerator.GeneratePerlinMaps(ref map, ref biom, Vector2Int.zero);
+    //    //visualisation.RenderMap(map.width, map.values);
+    //    //PrintBigMap();
+
+    //}
     private void Update()
     {
         //MapGenerator.GeneratePerlinMaps(ref map, ref biom, MiniOffset);

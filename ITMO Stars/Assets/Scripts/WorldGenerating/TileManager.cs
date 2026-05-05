@@ -16,39 +16,44 @@ public class TileManager : MonoBehaviour
     public Material EarthMaterial;
 
 
-    public static float RiverLow = 0.43f;
-    public static float RiverHight = 0.54f;
-    public static float BiomLow = 0.3f;
-    public static float WaterHight =0;
-    public static float SandHight = 0.4f;
-    public float _RiverLow = 0.43f;
-    public float _RiverHight = 0.54f;
-    public  float _BiomLow = 0.3f;
-    public  float _WaterHight =0;
-    public  float _SandHight = 0.4f;
+    public static float RiverLow;
+    public static float RiverHight ;
+    public static float BiomLow ;
+    public static float WaterHight;
+    public static float SandHight;
+    public float _RiverLow;
+    public float _RiverHight;
+    public  float _BiomLow;
+    public  float _WaterHight;
+    public  float _SandHight;
 
     //[SerializeField] TileKit WaterKit;
     //[SerializeField] TileKit SandKit;
     //[SerializeField] TileKit EarthKit;
     [SerializeField] TileKit tilekit;
-    private void Awake()
+    public void SetConst()
     {
-
         RiverLow = _RiverLow;
         RiverHight = _RiverHight;
         BiomLow = _BiomLow;
         WaterHight = _WaterHight;
         SandHight = _SandHight;
-        TileControl.SetRules();
-        //TilePallet.WaterKit = WaterKit;
-        //TilePallet.SandKit = SandKit;
-        //TilePallet.EarthKit = EarthKit;
         TilePallet.DefaultKit = tilekit;    
         waterTilemap = _WaterTilemap;
         sandTilemap = _SandTilemap;
         earthTilemap = _EarthTilemap;
-
     }
+    //private void Awake()
+    //{
+
+    //    SetConst();
+    //    TileControl.SetRules();
+    //    //TilePallet.WaterKit = WaterKit;
+    //    //TilePallet.SandKit = SandKit;
+    //    //TilePallet.EarthKit = EarthKit;
+        
+
+    //}
     //private void Update()
     //{
 
@@ -60,7 +65,7 @@ public class TileManager : MonoBehaviour
     //}
     public static BiomType GetBiomType(float color)
     {
-        if (color <= (int)BiomType.atlantic)
+        if (color <= BiomLow)
             return BiomType.usual;
         else
             // return BiomType.blood
