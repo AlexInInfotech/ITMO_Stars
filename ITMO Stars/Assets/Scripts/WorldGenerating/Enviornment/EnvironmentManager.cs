@@ -124,6 +124,7 @@ public class EnvironmentManager : MonoBehaviour
             //bool t = Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.x / MapManager.tileMapWidth) == unitCoord.x
             //    && Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.y / MapManager.tileMapWidth) == unitCoord.y;
             //Debug.Log(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position + "  " + MapManager.tileMapWidth + " " + unitCoord + "  " + t);
+            
             if (Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.x / MapManager.tileMapWidth) == unitCoord.x
                 && Math.Floor(basesForElements[i.ToString() + ELEMENT].gameObject.transform.position.y / MapManager.tileMapWidth) == unitCoord.y)
                 DeleteElement(i.ToString() + ELEMENT);

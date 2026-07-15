@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterKit
   m_EditorClassIdentifier: Assembly-CSharp::TileKit
   Fill:
-  - {fileID: 11400000, guid: 179d95e3e7b35704bbe8849c37cc7287, type: 2}
+  - {fileID: 11400000, guid: 98833f8180eaafc4d96698e3de588086, type: 2}
   - {fileID: 11400000, guid: 2f32eca789530d7479e2ed5f3c3245ad, type: 2}
   Wall_Right: []
   Wall_Top: []

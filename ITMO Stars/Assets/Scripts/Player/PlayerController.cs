@@ -5,10 +5,11 @@ public class PlayerController : Movable
     [SerializeField] float sprintAcceleration = 6f;
     [SerializeField] Joystick joystick;
     Vector2 movement = Vector2.zero;
-
+    public static Transform playerTransform;
     public void LoadPosition()
     {
-        trans.position = SavingManager.GetPosition();
+        playerTransform = transform;
+        transform.position = SavingManager.GetPosition();
     }
 
     public void Attack()

@@ -15,5 +15,5 @@ MonoBehaviour:
   scale: 106.3
   seed: 1234
   octaves: 2
-  persistence: -0.22
+  persistence: 0.22
   lacunarity: 1.85

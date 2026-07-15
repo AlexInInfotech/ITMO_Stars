@@ -1,18 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDamage : AbstractDamagable
 {
+    [SerializeField] Slider healthBar;
     public override void GetDamage(int damage)
     {
-        //health -= damage;
-        //if (health < 0)
-        //{
-        //    Debug.Log("Dead");
-        //    health = MaxHealth;
-        //}
+        health -= damage;
+        if (health < 0)
+            health = MaxHealth;
+        healthBar.value = (float)health / MaxHealth;
     }
-    private void Start()
+    public void LoadHealth()
     {
+
         health = SavingManager.GetHealth();
     }
+    
 }

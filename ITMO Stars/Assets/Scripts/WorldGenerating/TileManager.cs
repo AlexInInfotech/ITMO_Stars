@@ -27,9 +27,9 @@ public class TileManager : MonoBehaviour
     public  float _WaterHight;
     public  float _SandHight;
 
-    //[SerializeField] TileKit WaterKit;
-    //[SerializeField] TileKit SandKit;
-    //[SerializeField] TileKit EarthKit;
+    [SerializeField] TileKit WaterKit;
+    [SerializeField] TileKit SandKit;
+    [SerializeField] TileKit EarthKit;
     [SerializeField] TileKit tilekit;
     public void SetConst()
     {
@@ -38,7 +38,10 @@ public class TileManager : MonoBehaviour
         BiomLow = _BiomLow;
         WaterHight = _WaterHight;
         SandHight = _SandHight;
-        TilePallet.DefaultKit = tilekit;    
+        TilePallet.DefaultKit = tilekit;
+        TilePallet.WaterKit = WaterKit;
+        TilePallet.SandKit = SandKit;
+        TilePallet.EarthKit = EarthKit;
         waterTilemap = _WaterTilemap;
         sandTilemap = _SandTilemap;
         earthTilemap = _EarthTilemap;

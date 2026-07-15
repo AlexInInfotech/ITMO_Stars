@@ -14,9 +14,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] MapCharcteristics riverMapCharac;
     [SerializeField] MapCharcteristics biomMapCharac;
     [SerializeField] MapCharcteristics environmentMapCharac;
-    [SerializeField] Transform playerTransform;
     [SerializeField] float LoadRadius;
-    const byte mapScale = 30;
+    const byte mapScale = 15;
     public const int tileMapWidth = 4 * mapScale;
     public const int typeMapWidth = tileMapWidth + 4;
     //FloatMap map = new FloatMap();
@@ -37,7 +36,7 @@ public class MapManager : MonoBehaviour
     public void StartMap()
     {
         SetConst();
-        Vector2Int startPosition = new Vector2Int(Mathf.FloorToInt(playerTransform.position.x / tileMapWidth), Mathf.FloorToInt(playerTransform.position.y / tileMapWidth));
+        Vector2Int startPosition = new Vector2Int(Mathf.FloorToInt(PlayerController.playerTransform.position.x / tileMapWidth), Mathf.FloorToInt(PlayerController.playerTransform.position.y / tileMapWidth));
         currentUnit = WorldUnit.GetWorldUnit(startPosition);
         currentUnit.PrintUnit();
         MapTransitions.SetMaterials(waterMaterial, sandMaterial, earthMaterial);
@@ -85,13 +84,13 @@ public class MapManager : MonoBehaviour
     }
     private void LoadNearestUnits()
     {
-        if (playerTransform.position.x <= currentUnit.coord.x * tileMapWidth + LoadRadius)
+        if (PlayerController.playerTransform.position.x <= currentUnit.coord.x * tileMapWidth + LoadRadius)
             offset.x = -1;
-        if (playerTransform.position.x >= (currentUnit.coord.x + 1) * tileMapWidth - LoadRadius)
+        if (PlayerController.playerTransform.position.x >= (currentUnit.coord.x + 1) * tileMapWidth - LoadRadius)
             offset.x = 1;
-        if (playerTransform.position.y <= currentUnit.coord.y * tileMapWidth + LoadRadius)
+        if (PlayerController.playerTransform.position.y <= currentUnit.coord.y * tileMapWidth + LoadRadius)
             offset.y = -1;
-        if (playerTransform.position.y >= (currentUnit.coord.y + 1) * tileMapWidth - LoadRadius)
+        if (PlayerController.playerTransform.position.y >= (currentUnit.coord.y + 1) * tileMapWidth - LoadRadius)
             offset.y = 1;
 
         if (offset != new Vector2Int(0, 0))
@@ -123,13 +122,13 @@ public class MapManager : MonoBehaviour
     }
     private void UpdateCurrentUnit()
     {
-        if (playerTransform.position.x <= currentUnit.coord.x * tileMapWidth)
+        if (PlayerController.playerTransform.position.x <= currentUnit.coord.x * tileMapWidth)
             offset.x = -1;
-        if (playerTransform.position.x >= (currentUnit.coord.x + 1) * tileMapWidth)
+        if (PlayerController.playerTransform.position.x >= (currentUnit.coord.x + 1) * tileMapWidth)
             offset.x = 1;
-        if (playerTransform.position.y <= currentUnit.coord.y * tileMapWidth)
+        if (PlayerController.playerTransform.position.y <= currentUnit.coord.y * tileMapWidth)
             offset.y = -1;
-        if (playerTransform.position.y >= (currentUnit.coord.y + 1) * tileMapWidth)
+        if (PlayerController.playerTransform.position.y >= (currentUnit.coord.y + 1) * tileMapWidth)
             offset.y = 1;
         if (offset != new Vector2Int(0, 0))
         {

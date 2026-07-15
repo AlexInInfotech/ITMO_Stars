@@ -67,6 +67,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7668682664775984329
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,6 +113,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -3499899402884772959, guid: 8ef943aefc8de6b4f9694532f126d3b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,7 +123,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &552347735537659595
 Animator:
@@ -291,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6037908261749070462
 Transform:
   m_ObjectHideFlags: 0
@@ -302,8 +303,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.09, y: 0, z: 0}
-  m_LocalScale: {x: 4.7052, y: 4.7052, z: 4.7052}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4246205061013949651}
   - {fileID: 7689768848493949265}
@@ -326,8 +327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   Visual: {fileID: 5064134019491435106}
   speed: 10
-  targetRadius: 2
-  chaseRadius: 0
+  targetRadius: 1.5
+  chaseRadius: 10
 --- !u!61 &2416428138672635443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -362,7 +363,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.22996888, y: 0.14524353}
+  m_Offset: {x: -0.1919918, y: -0.058509827}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -372,7 +373,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6610983, y: 1.2904868}
+  m_Size: {x: 0.5521202, y: 0.5949936}
   m_EdgeRadius: 0
 --- !u!50 &2440777089766991396
 Rigidbody2D:
@@ -386,7 +387,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 20
   m_LinearDamping: 4
   m_AngularDamping: 4
   m_GravityScale: 0
@@ -416,8 +417,8 @@ MonoBehaviour:
   topPoint: {fileID: 976692029912467637}
   bottomPoint: {fileID: 1930157131450162070}
   rightPoint: {fileID: 5109806825581899956}
-  attackRadius: 0
-  attackValue: 0
+  attackRadius: 0.66
+  attackValue: 2
   damagableLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -5159,7 +5160,7 @@ ParticleSystem:
     vectorLabel1_3: W
 --- !u!199 &4551729273818627307
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5205,6 +5206,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5236,7 +5238,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
 --- !u!1 &6919009734213850124
 GameObject:
   m_ObjectHideFlags: 0

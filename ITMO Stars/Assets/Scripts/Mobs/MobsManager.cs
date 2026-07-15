@@ -1,7 +1,5 @@
     using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MobsManager : MonoBehaviour
 {
@@ -10,7 +8,8 @@ public class MobsManager : MonoBehaviour
     private static MobInfo[] friendlyMobs;
     private static EnemyInfo[] enemies;
     public static int mobSeed = 10;
-    public static int maxMobCount = 10;
+    public static int maxMobCount = 20;
+    private static int renderRadius = 200;
     private class Mob
     {
         public GameObject gameObject;
@@ -37,10 +36,30 @@ public class MobsManager : MonoBehaviour
                 basesForEnemies[transform.GetChild(i).name] = new Mob(transform.GetChild(i).gameObject);
         managerTransform = GetComponent<Transform>();
     }
+
+    public static void ClearFarMobs()
+    {
+        int i = 0;
+        while (basesForFriendlyMobs.ContainsKey(i.ToString() + FRIENDLYMOB) || basesForEnemies.ContainsKey(i.ToString() + ENEMY))
+        {
+            if (basesForFriendlyMobs.ContainsKey(i.ToString() + FRIENDLYMOB)
+                && basesForFriendlyMobs[i.ToString() + FRIENDLYMOB] .IsActive
+                && renderRadius < Vector3.Distance(basesForFriendlyMobs[i.ToString() + FRIENDLYMOB].gameObject.transform.position, PlayerController.playerTransform.position))
+                DeleteMob(basesForFriendlyMobs[i.ToString() + FRIENDLYMOB].gameObject);
+
+
+            if (basesForEnemies.ContainsKey(i.ToString() + ENEMY)
+                && basesForEnemies[i.ToString() + ENEMY].IsActive
+                && renderRadius < Vector3.Distance(basesForEnemies[i.ToString() + ENEMY].gameObject.transform.position, PlayerController.playerTransform.position))
+                DeleteMob(basesForEnemies[i.ToString() + ENEMY].gameObject);
+
+            i++;
+        }
+    }
     public static void DeleteMob(GameObject gameObject)
     {   
         string name = gameObject.name;
-        if (IsMobFriendly(name))
+        if (name.Contains(FRIENDLYMOB))
         {
             basesForFriendlyMobs[name].IsActive = false;
             basesForFriendlyMobs[name].gameObject.SetActive(false);
@@ -80,9 +99,6 @@ public class MobsManager : MonoBehaviour
 
     private static bool IsMobFriendly(string mobName)
     {
-        //    foreach (MobInfo info in friendlyMobs)
-        //        if (info.name == mobName)
-        //            return true;
         return false;
     }
     private static void ApplyInfoToBase(GameObject Base, MobInfo inf)

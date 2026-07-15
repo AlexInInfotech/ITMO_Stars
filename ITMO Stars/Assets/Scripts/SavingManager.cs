@@ -39,7 +39,9 @@ public static class SavingManager
     }
     public static int GetHealth()
     {
-        return data.playerHealth;
+        if (data.playerHealth >= 0)
+            return data.playerHealth;
+        return playerDamagable.MaxHealth;
     }
  
     public static void SaveGame()
@@ -66,6 +68,14 @@ public static class SavingManager
     //    Debug.LogWarning("Файл сохранения не найден.");
     //    return default;
     //}
+    public static void DeleteSavings()
+    {
+        data.playerHealth = -1;
+        data.playerPosition = new Vector2(0, 0);
+        string json = JsonUtility.ToJson(data);
+        string path = Path.Combine(Application.persistentDataPath, fileName + ".json");
+        File.WriteAllText(path, json);
+    }
     public static void LoadSaves()
     {
         string path = Path.Combine(Application.persistentDataPath, fileName + ".json");

@@ -6,13 +6,13 @@ public class Movable : MonoBehaviour
     [SerializeField] protected AnimatorController Visual;
     [SerializeField]protected float speed = 5f;
     protected Rigidbody2D rb => this.GetComponent<Rigidbody2D>();
-    protected Transform trans => this.GetComponent<Transform>();
+    protected Transform transform => this.GetComponent<Transform>();
     public Vector2 direction { get; protected set; }
     protected void SetRotation()
     {
         if (direction.x == 0)
                 return;
-        trans.rotation = (direction.x < 0) ? new Quaternion(0, 180, 0, 0) : new Quaternion();
+        transform.rotation = (direction.x < 0) ? new Quaternion(0, 180, 0, 0) : new Quaternion();
     }
     public void SetSpeed(float newSpeed)
     {

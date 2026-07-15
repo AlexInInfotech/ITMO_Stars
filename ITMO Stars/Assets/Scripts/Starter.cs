@@ -7,6 +7,7 @@ public class Starter : MonoBehaviour
     [SerializeField] MapManager mapManager;
     [SerializeField] EnvironmentManager environmentManager;
     [SerializeField] PlayerController playerController;
+    [SerializeField] PlayerDamage playerDamage;
 
     [SerializeField] Transform playerTransform;
     [SerializeField] AbstractDamagable playerDamagable;
@@ -21,6 +22,7 @@ public class Starter : MonoBehaviour
         TileControl.SetRules();
         tileManager.SetConst();
         mapManager.StartMap();
+        playerDamage.LoadHealth();
     }
 
     

@@ -142,7 +142,7 @@ public static class TileControl
             TileForm = TileForm.Fill;
         else
             TileForm = GetTileForm(neighbors);
-        OutData.tileBase = TilePallet.GetTileBase( TileForm);
+        OutData.tileBase = TilePallet.GetTileBase(neighbors[4], TileForm, bioms[4]);
         OutData.tileType = neighbors[4];
         return OutData;
     }
@@ -152,8 +152,8 @@ public static class TileControl
         BiomType transitBiom = new BiomType();
         TransitionForm = GetTransitTileForm(bioms, ref transitBiom);
         Color FormInf = new Color(0, 0,  0, 1f);
-        FormInf.r = (float)(bioms[4]) / (float)(BiomType.CountElements);
-        FormInf.g =(float)(TransitionForm) / (float)(TileForm.CountElements);
+        //FormInf.r = (float)(bioms[4]) / (float)(BiomType.CountElements);
+        FormInf.r =(float)(TransitionForm) / (float)(TileForm.CountElements);
         return FormInf;
     }
     //private static Color GetBiomColor(TileType ground, BiomType biomType)
